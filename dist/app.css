@@ -384,8 +384,8 @@ body {
           filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
 }
 .paginate__clip {
-  -webkit-clip-path: polygon(0 19%, 100% 35%, 100% 70%, 0% 100%);
-          clip-path: polygon(0 19%, 100% 35%, 100% 70%, 0% 100%);
+  -webkit-clip-path: polygon(0 19%, 100% 35%, 100% 80%, 0% 100%);
+          clip-path: polygon(0 19%, 100% 35%, 100% 80%, 0% 100%);
   padding: 300px 0 150px;
   box-sizing: border-box;
   display: flex;
