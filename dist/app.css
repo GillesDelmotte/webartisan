@@ -1,109 +1,54 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap);@import url(https://fonts.googleapis.com/css?family=Lato:400,700&display=swap);/**
 * Tools
 */
-
 /**
 * Path
 */
-
 /**
 * Colors
 */
-
 /**
 * Fonts
 */
-
 /**
 * Easing
 */
+.article__tags .tag.javascript {
+  background-color: #517e9e;
+}
+.article__tags .tag.css {
+  background-color: #789e51;
+}
+.article__tags .tag.react-native {
+  background-color: #9e5151;
+}
+.article__tags .tag.laravel {
+  background-color: #519e8c;
+}
+.article__tags .tag.vuejs {
+  background-color: #519e61;
+}
+.article__tags .tag.php {
+  background-color: #cd8732;
+}
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -113,18 +58,8 @@ video {
 }
 
 /* HTML5 display-role reset for older browsers */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
@@ -132,20 +67,16 @@ body {
   line-height: 1;
 }
 
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
 
-blockquote,
-q {
+blockquote, q {
   quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote:before, blockquote:after,
+q:before, q:after {
   content: "";
   content: none;
 }
@@ -158,7 +89,6 @@ table {
 /**
 * Components
 */
-
 body {
   background-color: #F8F8F8;
 }
@@ -173,11 +103,9 @@ body {
   width: 100%;
   box-sizing: border-box;
 }
-
 .header__logo img {
   width: 150px;
 }
-
 .header__connexion {
   margin-left: 50px;
   color: #1D1D1D;
@@ -186,30 +114,24 @@ body {
   margin-top: 27.5px;
   border-bottom: 2px solid #1D1D1D;
 }
-
 .header__nav {
   font-family: "Montserrat", sans-serif;
   display: flex;
 }
-
 .header__nav .menu {
   margin-top: 20px;
   display: flex;
 }
-
 .header__nav .menu-item {
   position: relative;
   padding: 7.5px;
 }
-
 .header__nav .menu-item.current_page_item {
   background-color: black;
 }
-
 .header__nav .menu-item.current_page_item a {
   color: #F8F8F8;
 }
-
 .header__nav .menu-item a {
   color: #1D1D1D;
   text-decoration: none;
@@ -222,7 +144,6 @@ body {
   -webkit-filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
           filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
 }
-
 .pageHeader__clip {
   height: 800px;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 35%, 0% 100%);
@@ -230,7 +151,6 @@ body {
   padding-top: 150px;
   box-sizing: border-box;
 }
-
 .pageHeader__clip .pageHeader__title {
   margin-left: 123px;
   font-family: "Lato", sans-serif;
@@ -242,7 +162,6 @@ body {
   margin-bottom: 30px;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
 }
-
 .pageHeader__clip .pageHeader__content {
   margin-left: 123px;
   width: 700px;
@@ -279,7 +198,6 @@ body {
   -webkit-filter: drop-shadow(-1px -6px 5px rgba(50, 50, 0, 0.3));
           filter: drop-shadow(-1px -6px 5px rgba(50, 50, 0, 0.3));
 }
-
 .pageFooter__clip {
   -webkit-clip-path: polygon(0 25%, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(0 25%, 100% 0, 100% 100%, 0% 100%);
@@ -317,26 +235,21 @@ body {
 .footer__nav {
   font-family: "Montserrat", sans-serif;
 }
-
 .footer__nav .menu {
   margin-top: 20px;
 }
-
 .footer__nav .menu-item {
   position: relative;
   padding: 7.5px;
   margin: 5px 0;
 }
-
 .footer__nav .menu-item.current_page_item {
   background-color: black;
   display: inline;
 }
-
 .footer__nav .menu-item.current_page_item a {
   color: #F8F8F8;
 }
-
 .footer__nav .menu-item a {
   color: #1D1D1D;
   text-decoration: none;
@@ -349,7 +262,6 @@ body {
 .footer__newsletter {
   width: 600px;
 }
-
 .footer__newsletter__title {
   font-family: "Lato", sans-serif;
   font-size: 30px;
@@ -357,7 +269,6 @@ body {
   color: #F8F8F8;
   margin-bottom: 20px;
 }
-
 .footer__newsletter__content {
   font-family: "Montserrat", sans-serif;
   color: #F8F8F8;
@@ -381,24 +292,20 @@ body {
   border-radius: 3px;
   margin-bottom: 15px;
 }
-
 .article__img img {
   height: auto;
   width: 100%;
 }
-
 .article__title {
   margin: 0 75px 10px;
   font-family: "Lato", sans-serif;
   font-size: 25px;
   display: inline-block;
 }
-
 .article__title a {
   color: #517D9D;
   text-decoration: none;
 }
-
 .article__title a::after {
   content: "";
   display: block;
@@ -409,50 +316,99 @@ body {
   transition: 0.2s all;
   border-radius: 1px;
 }
-
 .article__title a:hover::after {
   width: 100%;
   transition: 0.2s all;
 }
-
 .article__infos {
   margin: 0 75px;
   margin-bottom: 20px;
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
+  display: flex;
 }
-
+.article__infos span {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+.article__infos span.article__date::before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/clock.svg");
+  background-size: 100% 100%;
+  margin-right: 5px;
+}
+.article__infos span.article__author::before {
+  content: "";
+  margin-right: 5px;
+  display: block;
+  width: 15px;
+  height: 15px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/man-user.svg");
+  background-size: 100% 100%;
+}
 .article__resume {
   margin: 20px 75px;
   font-family: "Montserrat", sans-serif;
   line-height: 22px;
   font-size: 14px;
 }
-
 .article__tags {
   margin: 0px 75px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.article__tags .tag {
-  padding: 5px 10px;
-  font-size: 15px;
-  border-radius: 12.5px;
+.tag {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  border-radius: 17.5px;
+  background-color: lightgrey;
   margin-right: 10px;
   color: white;
   font-family: "Montserrat", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
+  box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.2);
 }
 
-.article__tags .tag.javascript {
-  background-color: #517D9D;
+.paginate {
+  -webkit-filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
+          filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
+}
+.paginate__clip {
+  -webkit-clip-path: polygon(0 19%, 100% 35%, 100% 70%, 0% 100%);
+          clip-path: polygon(0 19%, 100% 35%, 100% 70%, 0% 100%);
+  padding: 300px 0 150px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  margin-top: -350px;
+}
+.paginate__clip a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #1D1D1D;
+}
+.paginate__clip .current {
+  margin: 0 10px;
+  color: white;
+  background-color: #1D1D1D;
+  padding: 5px;
 }
 
-.article__tags .tag.css {
-  background-color: #779D51;
+.paginate.actu .paginate__clip {
+  background-color: #D35858;
 }
 
 .sr-only {
@@ -471,9 +427,7 @@ body {
   z-index: 1;
   margin: -520px 48px 0;
 }
-
 .actu__thumbnail img {
   width: 100%;
   height: auto;
 }
-
