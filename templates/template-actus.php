@@ -9,7 +9,8 @@
                 <?= get_field('header__description'); ?>
             </p>
         </div>
-        <section class="articles">
+    </div>
+    <section class="articles">
             <h2 class="sr-only">Tous les articles</h2>
             <?php $currentPage = get_query_var('paged'); $actus = new WP_Query(array('post_type' => 'actualities', 'posts_per_page' => 4, 'paged' => $currentPage)); ?>
             <?php while($actus->have_posts()) : $actus->the_post(); ?>
@@ -47,10 +48,6 @@
                 )); ?> 
             </div>
         </div>
-        
-        
-
-    </div>
 </body>
 <footer class="pageFooter actu">
     
