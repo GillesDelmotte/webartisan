@@ -1,0 +1,70 @@
+/**
+* Path
+*/
+
+$img : "../img/";
+$fonts : "../fonts/";
+
+/**
+* Colors
+*/
+
+$color__blue : #517D9D;
+
+$color__white : #F8F8F8;
+$color__black : #1D1D1D;
+
+$color__home : #58D39A;
+$color__actu : #D35858;
+$color__emplois : #6B58D3;
+$color__forum : #D38758;
+$color__job : #5887D3;
+$color__snippet : #D35879;
+
+
+$color__facebook : #3b5998;
+$color__twitter : #55ACEE;
+$color__linkedin : #0077B5;
+$color__googleplus : #DD4B39;
+
+
+/**
+* Fonts
+*/
+
+$font__content : 'Montserrat', sans-serif; 
+$font__title : 'Lato', sans-serif; 
+
+/**
+* Easing
+*/
+
+$linear : cubic-bezier(.250, .250, .750, .750);
+$easeInQuad : cubic-bezier(.550, .085, .680, .530);
+$easeInCubic : cubic-bezier(.550, .055, .675, .190);
+$easeInQuart : cubic-bezier(.895, .030, .685, .220);
+$easeInQuint : cubic-bezier(.755, .050, .855, .060);
+$easeInSine : cubic-bezier(.470, .000, .745, .715);
+$easeInExpo : cubic-bezier(.950, .050, .795, .035);
+$easeInCirc : cubic-bezier(.600, .040, .980, .335);
+$easeInBack : cubic-bezier(.600, 0, .735, .045);
+$easeOutQuad : cubic-bezier(.250, .460, .450, .940);
+$easeOutCubic : cubic-bezier(.215, .610, .355, 1.000);
+$easeOutQuart : cubic-bezier(.165, .840, .440, 1.000);
+$easeOutQuint : cubic-bezier(.230, 1.000, .320, 1.000);
+$easeOutSine : cubic-bezier(.390, .575, .565, 1.000);
+$easeOutExpo : cubic-bezier(.190, 1.000, .220, 1.000);
+$easeOutCirc : cubic-bezier(.075, .820, .165, 1.000);
+$easeOutBack : cubic-bezier(.175, .885, .320, 1);
+$easeInOutQuad : cubic-bezier(.455, .030, .515, .955);
+$easeInOutCubic : cubic-bezier(.645, .045, .355, 1.000);
+$easeInOutQuart : cubic-bezier(.770, .000, .175, 1.000);
+$easeInOutQuint : cubic-bezier(.860, .000, .070, 1.000);
+$easeInOutSine : cubic-bezier(.445, .050, .550, .950);
+$easeInOutExpo : cubic-bezier(1.000, .000, .000, 1.000);
+$easeInOutCirc : cubic-bezier(.785, .135, .150, .860);
+$easeInOutBack : cubic-bezier(.680, 0, .265, 1);
+
+$bounceEase : cubic-bezier(0.52, 1.64, 0.37, 0.66);
+
+$mainEase: cubic-bezier(.550, .055, .675, .190);

@@ -1,0 +1,104 @@
+body{
+    background-color: $color__white;
+}
+.header{
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 47px;
+    width: 100%;
+    box-sizing: border-box;
+    &__logo{
+        img{
+            width: 150px;
+        }
+    }
+    &__connexion{
+        margin-left: 50px;
+        color : $color__black;
+        margin-top: 7.5px;
+        text-decoration: none;
+        margin-top: 27.5px;
+        border-bottom: 2px solid $color__black;
+    }
+
+    &__nav{
+        font-family: $font__content;
+        display: flex;
+        
+        .menu{
+            margin-top: 20px;
+            display: flex;
+            &-item{
+                position: relative;
+                padding:7.5px;
+                
+                &.current_page_item{
+                    background-color: black;
+                    
+                    a{
+                        color: $color__white;
+                    }
+                }
+                a{
+                    color: $color__black;
+                    text-decoration: none;
+                    font-size: 16px;
+                    letter-spacing: 1.2px;
+                    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+                }
+            }
+            
+        }
+    }
+}
+
+.pageHeader{
+    filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
+    &__clip{
+        height: 800px;
+        clip-path: polygon(0 0, 100% 0, 100% 35%, 0% 100%);
+        padding-top: 150px;
+        box-sizing: border-box;
+        .pageHeader__title{
+            margin-left: 123px;
+            font-family: $font__title;
+            font-weight: bold;
+            color: $color__white;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 60px;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+        }
+        .pageHeader__content{
+            margin-left: 123px;
+            width: 700px;
+            color:$color__white;
+            font-family: $font__content;
+            line-height: 35px;
+            
+        }
+    }
+}
+
+.pageHeader.homepage .pageHeader__clip{
+    background-color: $color__home;
+}
+.pageHeader.actu .pageHeader__clip{
+    background-color: $color__actu;
+}
+.pageHeader.deals .pageHeader__clip{
+    background-color: $color__emplois;
+}
+.pageHeader.forum .pageHeader__clip{
+    background-color: $color__forum;
+}
+.pageHeader.jobs .pageHeader__clip{
+    background-color: $color__job;
+}
+.pageHeader.snippets .pageHeader__clip{
+    background-color: $color__snippet;
+}

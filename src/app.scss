@@ -1,0 +1,22 @@
+/**
+* Tools
+*/
+
+@import "scss/Settings/variables";
+@import "scss/Settings/fonts";
+@import "scss/Generics/reset";
+
+
+/**
+* Components
+*/
+
+@import "scss/Components/header";
+@import "scss/Components/footer";
+@import "scss/Components/article";
+
+
+
+
+@import "scss/Utils/sr-only";
+@import "scss/global";
