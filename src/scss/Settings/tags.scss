@@ -1,0 +1,20 @@
+.article__tags .tag{
+    &.javascript{
+        background-color: hsl(205°, 32%, 47%);
+    }
+    &.css{
+        background-color: hsl(90°, 32%, 47%);
+    }
+    &.react-native{
+        background-color: hsl(0°, 32%, 47%);
+    }
+    &.laravel{
+        background-color: hsl(166°, 32%, 47%);
+    }
+    &.vuejs{
+        background-color: hsl(132°, 32%, 47%);
+    }
+    &.php{
+        background-color: hsl(33°, 61%, 50%);
+    }
+}
