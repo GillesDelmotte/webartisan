@@ -1,0 +1,28 @@
+.wysiwyg{
+    p{
+        margin:20px 0;
+    }
+    li{
+        display: flex;
+        align-items: center;
+        position: relative;
+        left: -10px;
+        &::before{
+            content: '';
+            display: inline-block;
+            height: 1px;
+            background-color: $color__black;
+            width: 20px;
+            margin-right: 10px;
+
+        }
+    }
+    a{
+        text-decoration: none;
+        color: $color__blue;
+        font-weight: bold;
+        &:hover{
+            border-bottom: 2px solid $color__blue;
+        }
+    }
+}
