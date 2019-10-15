@@ -1,0 +1,120 @@
+.offers{
+    margin: -350px 48px 100px; 
+    position: relative;
+    z-index: 1;
+    
+}
+
+.offer{
+    overflow: auto;
+    position: relative;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding: 20px 60px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    top: 0;
+    transition: 0.3s top $easeOutQuint;
+
+    &:hover{
+        top: -10px;
+        transition: 0.3s top $easeOutQuint;
+    }
+    &__img{
+        width: 50px;
+        height: 50px;
+        background-color: $color__blue;
+        display: block;
+        border-radius: 50%;
+        float: left;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__tags{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__title{
+        margin-bottom: 5px;
+        font-family: $font__title;
+        font-size: 25px;
+        display: inline-block;
+        color: $color__blue;
+    }
+
+    &__infos{
+        margin-bottom: 20px;
+        font-family: $font__title;
+        display: flex;
+        color: $color__black;
+        span{
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            a{
+                text-decoration: none;
+                color: $color__black;
+            }
+            &.offer__date::before{
+                content: '';
+                display: block;
+                //background-color: black;
+                width: 20px;
+                height: 20px;
+                background-image: url("#{$icons}clock.svg");
+                background-size: 100% 100%;
+                margin-right: 5px;
+            }
+            &.offer__location::before{
+                content: '';
+                margin-right: 5px;
+                display: block;
+                //background-color: black;
+                width: 20px;
+                height: 20px;
+                background-image: url("#{$icons}maps.svg");
+                background-size: 100% 100%;
+            }
+            &.offer__email::before{
+                content: '';
+                margin-right: 5px;
+                display: block;
+                //background-color: black;
+                width: 20px;
+                height: 20px;
+                background-image: url("#{$icons}email.svg");
+                background-size: 100% 100%;
+            }
+            &.offer__phone::before{
+                content: '';
+                margin-right: 5px;
+                display: block;
+                //background-color: black;
+                width: 20px;
+                height: 20px;
+                background-image: url("#{$icons}phone.svg");
+                background-size: 100% 100%;
+                
+            }
+        }
+    }
+
+    &__all{
+        margin: 0 65px;
+    }
+
+    &__content{
+        position: relative;
+        z-index: 1;
+        font-family: $font__content;
+        line-height: 1.5;
+    }
+}
+
+
