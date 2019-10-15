@@ -25,7 +25,21 @@
             'public' => true,
             'menu_position' => 5,
             'menu_icon' => 'dashicons-businessman',
-            'rewrite' => ['slug' => 'actualities'],
+            'rewrite' => ['slug' => 'jobs'],
+            'taxonomies' => array('post_tag')
+        ]);
+
+        register_post_type('worker', [
+            'label' => 'les métiers du web',
+            'labels' => [
+                'singular-name' => 'métier du web',
+                'add_new_item' => 'ajouter un nouveau métier'
+            ],
+            'description' => 'Tous les métiers',
+            'public' => true,
+            'menu_position' => 5,
+            'menu_icon' => 'dashicons-welcome-learn-more',
+            'rewrite' => ['slug' => 'worker'],
             'taxonomies' => array('post_tag')
         ]);
     }
