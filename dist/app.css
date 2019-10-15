@@ -13,23 +13,26 @@
 /**
 * Easing
 */
-.article__tags .tag.javascript, .actu__tags .tag.javascript {
+.tag.javascript {
   background-color: #517e9e;
 }
-.article__tags .tag.css, .actu__tags .tag.css {
+.tag.css {
   background-color: #789e51;
 }
-.article__tags .tag.react-native, .actu__tags .tag.react-native {
+.tag.react-native {
   background-color: #9e5151;
 }
-.article__tags .tag.laravel, .actu__tags .tag.laravel {
+.tag.laravel {
   background-color: #519e8c;
 }
-.article__tags .tag.vuejs, .actu__tags .tag.vuejs {
+.tag.vuejs {
   background-color: #519e61;
 }
-.article__tags .tag.php, .actu__tags .tag.php {
+.tag.php {
   background-color: #cd8732;
+}
+.tag.java {
+  background-color: #c3cd32;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -399,6 +402,11 @@ body {
   line-height: 1.5;
 }
 
+.actu__infos, .actu__tags {
+  position: relative;
+  z-index: 1;
+}
+
 .single__actu .actu__infos {
   margin: 20px 123px;
   margin-bottom: 20px;
@@ -468,6 +476,10 @@ body {
   background-color: #D35858;
 }
 
+.paginate.emplois .paginate__clip {
+  background-color: #6B58D3;
+}
+
 .homepage__actu__title {
   font-family: "Lato", sans-serif;
   font-size: 50px;
@@ -501,6 +513,113 @@ body {
 }
 .wysiwyg a:hover {
   border-bottom: 2px solid #517D9D;
+}
+
+.offers {
+  margin: -350px 48px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.offer {
+  overflow: auto;
+  position: relative;
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 20px 60px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  top: 0;
+  transition: 0.3s top cubic-bezier(0.23, 1, 0.32, 1);
+}
+.offer:hover {
+  top: -10px;
+  transition: 0.3s top cubic-bezier(0.23, 1, 0.32, 1);
+}
+.offer__img {
+  width: 50px;
+  height: 50px;
+  background-color: #517D9D;
+  display: block;
+  border-radius: 50%;
+  float: left;
+  overflow: hidden;
+}
+.offer__img img {
+  width: 100%;
+  height: auto;
+}
+.offer__tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+.offer__title {
+  margin-bottom: 5px;
+  font-family: "Lato", sans-serif;
+  font-size: 25px;
+  display: inline-block;
+  color: #517D9D;
+}
+.offer__infos {
+  margin-bottom: 20px;
+  font-family: "Lato", sans-serif;
+  display: flex;
+  color: #1D1D1D;
+}
+.offer__infos span {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+.offer__infos span a {
+  text-decoration: none;
+  color: #1D1D1D;
+}
+.offer__infos span.offer__date::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/clock.svg");
+  background-size: 100% 100%;
+  margin-right: 5px;
+}
+.offer__infos span.offer__location::before {
+  content: "";
+  margin-right: 5px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/maps.svg");
+  background-size: 100% 100%;
+}
+.offer__infos span.offer__email::before {
+  content: "";
+  margin-right: 5px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/email.svg");
+  background-size: 100% 100%;
+}
+.offer__infos span.offer__phone::before {
+  content: "";
+  margin-right: 5px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/phone.svg");
+  background-size: 100% 100%;
+}
+.offer__all {
+  margin: 0 65px;
+}
+.offer__content {
+  position: relative;
+  z-index: 1;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
 }
 
 .sr-only {
