@@ -1,0 +1,26 @@
+.redirection{
+    text-align: center;
+    margin: 40px 48px;
+    font-family: $font__content;
+    &__para{
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+    a{
+        display: inline-block;
+        background-color: white;
+        padding: 10px;
+        margin: 0 7.5px;
+        text-decoration: none;
+        color: $color__black;
+        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        transition: 0.2s background-color,color;
+        &:hover{
+            background-color: $color__black;
+            color: $color__white;
+            transition: 0.2s background-color,color;
+        }
+    }
+    
+}
