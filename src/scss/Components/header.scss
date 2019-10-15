@@ -63,11 +63,12 @@ body{
         padding-top: 150px;
         box-sizing: border-box;
         .pageHeader__title{
-            margin-left: 123px;
+            margin: 0px 123px;
             font-family: $font__title;
             font-weight: bold;
             color: $color__white;
             letter-spacing: 3px;
+            line-height: 1.3;
             text-transform: uppercase;
             font-size: 60px;
             margin-bottom: 30px;
