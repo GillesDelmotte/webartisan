@@ -132,6 +132,11 @@
     line-height: 1.5;
 }
 
+.actu__infos, .actu__tags{
+    position: relative;
+    z-index: 1;
+}
+
 
 .single__actu{
     .actu{
