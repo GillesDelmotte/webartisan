@@ -1,4 +1,4 @@
-.article__tags .tag, .actu__tags .tag{
+.tag{
     &.javascript{
         background-color: hsl(205°, 32%, 47%);
     }
@@ -16,5 +16,8 @@
     }
     &.php{
         background-color: hsl(33°, 61%, 50%);
+    }
+    &.java{
+        background-color: hsl(64°, 61%, 50%);
     }
 }
