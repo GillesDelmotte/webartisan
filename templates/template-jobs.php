@@ -1,4 +1,9 @@
 <?php /*Template name: page des métiers du web*/ ?>
+<?php
+    $currentPage = get_query_var('paged');
+    $jobs = new WP_Query(array('s'=>$_GET['recherche'], 'post_type' => 'worker', 'posts_per_page' => 8, 'paged' => $currentPage)); 
+?>
+
 <?php get_header(); ?> 
 <div class="pageHeader jobs">
     <div class="pageHeader__clip">
@@ -10,9 +15,13 @@
         </p>
     </div>
 </div>
+<div class="search__jobs">
+    <form action="" class="search__jobs__form" method="get">
+        <input type="search" placeholder="Rechercher" class="search__jobs__form__input" name="recherche"> <button class="search__jobs__form__button"><span class="sr-only">validez</span><?php require get_template_directory().'/dist/icons/correct.svg';?></button>
+    </form>
+</div>
 <section class="jobs">
     <h2 class="sr-only">Tous les métiers du web</h2>
-    <?php $currentPage = get_query_var('paged'); $jobs = new WP_Query(array('post_type' => 'worker', 'posts_per_page' => 8, 'paged' => $currentPage)); ?>
     <ul class="persons">
         <?php while($jobs->have_posts()) : $jobs->the_post(); ?>
         <li class="person">
@@ -36,6 +45,12 @@
             'mid_size' => 3,
             'prev_next' => false
         )); ?> 
+        <?php if($jobs->have_posts()) : while($jobs->have_posts()) : $jobs->the_post(); ?>
+        
+        <?php endwhile; else:?>
+        <p>Il n'y a pas de réponse a votre recherche</p>
+        <?php endif; ?>
+        <?php wp_reset_query(); ?> 
     </div>
 </div>
 <div class="redirection">
