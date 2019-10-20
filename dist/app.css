@@ -633,13 +633,64 @@ body {
   line-height: 1.5;
 }
 
+.search__jobs {
+  margin: -350px 48px 100px;
+  position: relative;
+  z-index: 1;
+}
+.search__jobs__form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.search__jobs__form__input {
+  outline: none;
+  padding: 5px 15px;
+  display: inline-block;
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  background-color: #F8F8F8;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 50px;
+  width: 500px;
+}
+.search__jobs__form__button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  border: none;
+  margin-left: 15px;
+  outline: none;
+  transition: 0.2s background-color;
+}
+.search__jobs__form__button:hover {
+  background-color: #5887D3;
+  transition: 0.2s background-color;
+}
+.search__jobs__form__button:hover svg {
+  fill: #F8F8F8;
+  transition: 0.2s fill;
+}
+.search__jobs__form__button svg {
+  width: 100%;
+  height: auto;
+  fill: #5887D3;
+  transition: 0.2s fill;
+}
+
 .persons {
   position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 15px;
-  margin: -350px 48px 100px;
+  margin: 0 48px 100px;
+  min-height: 200px;
 }
 
 .person {
