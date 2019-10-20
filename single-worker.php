@@ -16,6 +16,14 @@
         </div>
         <p class="person__name"><?= get_field('job__name'); ?></p>
     </div>
+    <?php if (have_rows('interview')) : while (have_rows('interview')) : the_row(); ?>
+        <p>
+            <?= get_sub_field('interview__qst');?>
+        </p>
+        <p>
+            <?= get_sub_field('interview__rsp');?>
+        </p>
+    <?php endwhile; endif; ?>
 </article>
 </body>
 <footer class="pageFooter jobs"> 
