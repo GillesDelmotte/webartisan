@@ -1,10 +1,65 @@
+.search__jobs{
+    margin: -350px 48px 100px;
+    position: relative;
+    z-index: 1;
+    &__form{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        &__input{
+            outline: none;
+            padding: 5px 15px;
+            display:inline-block;
+            font-size: 20px;
+            font-family: $font__title;
+            background-color: $color__white;
+            //border: 1px solid $color__black;
+            box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+            border:none;
+            border-radius: 50px;
+            width: 500px;
+        }
+        &__button{
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+            border:none;
+            margin-left: 15px;
+            outline: none;
+            transition: 0.2s background-color;
+            &:hover{
+                background-color: $color__job;
+                transition: 0.2s background-color;
+                svg{
+                    fill:$color__white;
+                    transition: 0.2s fill;
+                }
+            }
+            svg{
+                width: 100%;
+                height: auto;
+                fill: $color__job;
+                transition: 0.2s fill;
+
+            }
+
+        }
+        
+    }
+}
 .persons{
     position: relative;
     z-index: 1;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; 
     gap: 15px;
-    margin: -350px 48px 100px;
+    margin: 0 48px 100px;
+    min-height: 200px;
+
 }
 .person{
     position: relative;
