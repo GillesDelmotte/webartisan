@@ -4,9 +4,9 @@
 .job__person__infos{
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin: -180px 48px 40px;
+    //justify-content: flex-end;
+    align-items: center;
+    margin: -300px 48px 40px;
 }
 
 .job__person__infos__img{
@@ -15,7 +15,7 @@
     border-radius: 150px;
     overflow: hidden;
     position: relative;
-    top: -130px;
+    //top: -130px;
     img{
         width: 300px;
         height: auto;
@@ -68,5 +68,24 @@
             width: 100%;
             height: auto;
         }
+    }
+}
+
+.question{
+    margin: 20px 48px;
+    font-family: $font__title;
+    font-size: 25px;
+}
+
+.paragraphe{
+    margin: 20px 48px 50px;
+    font-family: $font__content;
+    line-height: 1.6;
+}
+
+.interview__img{
+    margin: 0 48px 50px;
+    img{
+        width: 100%;
     }
 }
