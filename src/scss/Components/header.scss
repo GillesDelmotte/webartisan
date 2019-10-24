@@ -61,6 +61,7 @@ body{
         height: 800px;
         clip-path: polygon(0 0, 100% 0, 100% 35%, 0% 100%);
         padding-top: 150px;
+        //min-width: 1280px;
         box-sizing: border-box;
         &--small{
             height: 720px;
@@ -88,6 +89,7 @@ body{
             color:$color__white;
             font-family: $font__content;
             line-height: 35px;
+            width: 50%;
             
         }
     }

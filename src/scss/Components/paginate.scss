@@ -1,8 +1,8 @@
 .paginate{
     filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
     &__clip{
-        clip-path: polygon(0 19%, 100% 35%, 100% 80%, 0% 100%);
-        padding: 300px 0 150px;
+        clip-path: polygon(0 0, 100% 35%, 100% 100%, 0% 100%);
+        padding: 300px 0 50px;
         box-sizing: border-box;
         display: flex;
         justify-content: center;
@@ -10,6 +10,7 @@
         font-size: 20px;
         font-family: $font__content;
         margin-top: -350px;
+        margin-bottom: 100px;
         a{
             margin: 0 10px;
             text-decoration: none; 
