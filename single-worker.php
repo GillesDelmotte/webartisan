@@ -4,7 +4,7 @@
     <div class="pageHeader jobs">
         <div class="pageHeader__clip pageHeader__clip--small">
             <h1 class="pageHeader__title">
-                Les métiers du web <span><?= the_title(); ?></span>
+                Les métiers du web <span><?= get_field('job__name'); ?> - <?php the_title(); ?></span>
             </h1>
             <p class="pageHeader__content"><?= get_field('job__introduction'); ?></p>
         </div>
@@ -14,19 +14,17 @@
             <?php $img = get_field('job__img'); $size = 'thumb_285x350' ?>
             <?= wp_get_attachment_image( $img, $size ); ?>
         </div>
-        <p class="job__person__infos__name"><?= get_field('job__name'); ?></p>
     </div>
-    <?php if (have_rows('interview')) : while (have_rows('interview')) : the_row(); ?>
-    <div class="qst__rsp">
-        <p class="qst">
-            <?= get_sub_field('interview__qst');?>
-        </p>
-        <p class='rsp'>
-            <?= get_sub_field('interview__rsp');?>
-        </p>
+    <div class="interview">
+            <div class="interview__content">
+                <?php if (have_rows('interview')) : while (have_rows('interview')) : the_row(); ?>
+
+                    <?php include 'inc/' . get_row_layout() . '.php'; ?>
+
+                <?php endwhile; endif; ?>
+            </div>  
     </div>
-        
-    <?php endwhile; endif; ?>
+    
 </article>
 <section class="other">
     <h2 class="other__title">D'autres métiers du web</h2>
