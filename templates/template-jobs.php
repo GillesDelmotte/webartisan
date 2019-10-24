@@ -17,7 +17,7 @@
 </div>
 <div class="search__jobs">
     <form action="" class="search__jobs__form" method="get">
-        <input type="search" placeholder="Rechercher" class="search__jobs__form__input" name="recherche"> <button class="search__jobs__form__button"><span class="sr-only">validez</span><?php require get_template_directory().'/dist/icons/correct.svg';?></button>
+        <input type="search" value="<?= $_GET['recherche']; ?>" placeholder="Rechercher" class="search__jobs__form__input search-autocomplete" name="recherche"> <button class="search__jobs__form__button"><span class="sr-only">Rechercher</span><?php require get_template_directory().'/dist/icons/correct.svg';?></button>
     </form>
 </div>
 <section class="jobs">
@@ -45,21 +45,42 @@
             'mid_size' => 3,
             'prev_next' => false
         )); ?> 
-        <?php if($jobs->have_posts()) : while($jobs->have_posts()) : $jobs->the_post(); ?>
-        
+        <!-- <?php if($jobs->have_posts()) : while($jobs->have_posts()) : $jobs->the_post(); ?>
+        <?php if($_GET['recherche']):?>
+        <p>vortre recherche : <?= $_GET['recherche']; ?></p>
+        <?php endif; ?>
         <?php endwhile; else:?>
         <p>Il n'y a pas de réponse a votre recherche</p>
-        <?php endif; ?>
+        <p>vortre recherche : <?= $_GET['recherche']; ?></p>        
+        <?php endif; ?> -->
         <?php wp_reset_query(); ?> 
     </div>
 </div>
 <div class="redirection">
     <p class="redirection__para">Vous chercher un emplois ou un stage ? Consultez notre page avec toutes les offres des agences</p>
     <div class="redirction__link">
-        <a href="">Aller sur la page emplois</a>
-        <a href="">Aller sur la page stage</a>
+        <a href="<?php the_permalink(14); ?>">Aller sur la page emplois</a>
+        <a href="<?php the_permalink(14); ?>">Aller sur la page stage</a>
     </div>
 </div>
+<section class="job__contact">
+    <div class="job__contact__img"><img src="<?= assets('./dist/icons/man-user.svg'); ?>" alt=""></div>
+    <div class="job__contact__content">
+        <h2 class="job__contact__title">Votre profil&nbsp;?</h2>
+        <p class="job__contact__explaination">Vous avez un métiers qui n'est pas encore repris sur cette page ? vous êtes dans le domaine du web ? Contactez-nous pour qu'on puisse se rencontrer </p>
+        <form action="../functions/contactJob.php" method="POST">
+            <div class="job__contact__form__email">
+                <label for="email">Votre email&nbsp;:</label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div class="job__contact__form__message">
+                <label for="message">Votre message&nbsp;:</label>
+                <textarea name="message" id="message" cols="30" rows="5"></textarea>
+            </div>
+            <input type="submit" value="Envoyer">
+        </form>
+    </div>
+</section>
 </body>
 <footer class="pageFooter jobs">
     
