@@ -179,6 +179,7 @@ body {
   color: #F8F8F8;
   font-family: "Montserrat", sans-serif;
   line-height: 35px;
+  width: 50%;
 }
 
 .pageHeader.homepage .pageHeader__clip {
@@ -285,6 +286,53 @@ body {
   color: #F8F8F8;
   line-height: 25px;
   font-size: 16px;
+}
+
+.footer__newsletter__form {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.footer__newsletter__form__input {
+  outline: none;
+  padding: 5px 15px;
+  display: inline-block;
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  background-color: #F8F8F8;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 50px;
+  width: 100%;
+  -webkit-appearance: none;
+}
+.footer__newsletter__form__button {
+  -webkit-appearance: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  border: none;
+  margin-left: 15px;
+  outline: none;
+  transition: 0.2s background-color;
+}
+.footer__newsletter__form__button:hover {
+  background-color: #5887D3;
+  transition: 0.2s background-color;
+}
+.footer__newsletter__form__button:hover svg {
+  fill: #F8F8F8;
+  transition: 0.2s fill;
+}
+.footer__newsletter__form__button svg {
+  width: 100%;
+  height: auto;
+  fill: #5887D3;
+  transition: 0.2s fill;
 }
 
 .articles {
@@ -456,9 +504,9 @@ body {
           filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
 }
 .paginate__clip {
-  -webkit-clip-path: polygon(0 19%, 100% 35%, 100% 80%, 0% 100%);
-          clip-path: polygon(0 19%, 100% 35%, 100% 80%, 0% 100%);
-  padding: 300px 0 150px;
+  -webkit-clip-path: polygon(0 0, 100% 35%, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 35%, 100% 100%, 0% 100%);
+  padding: 300px 0 50px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -466,6 +514,7 @@ body {
   font-size: 20px;
   font-family: "Montserrat", sans-serif;
   margin-top: -350px;
+  margin-bottom: 100px;
 }
 .paginate__clip a {
   margin: 0 10px;
@@ -654,6 +703,7 @@ body {
   border: none;
   border-radius: 50px;
   width: 500px;
+  -webkit-appearance: none;
 }
 .search__jobs__form__button {
   width: 32px;
@@ -699,14 +749,17 @@ body {
 }
 .person__infos {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 0px;
+  right: 0px;
+  left: 0;
+  top: 270px;
   font-family: "Lato", sans-serif;
   color: white;
   text-align: right;
   font-size: 16px;
-  opacity: 0;
-  transition: 0.2s opacity;
+  padding: 20px;
+  transition: 0.3s top cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  background-color: rgba(29, 29, 29, 0.8);
 }
 .person__infos span {
   display: block;
@@ -729,17 +782,95 @@ body {
   transition: 0.2s opacity;
 }
 .person__link:hover {
-  opacity: 1;
   transition: 0.2s opacity;
 }
 .person__link:hover ~ .person__infos {
-  opacity: 1;
-  transition: 0.2s opacity;
+  transition: 0.3s top cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  top: 0;
+}
+
+.job__contact {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
+  margin: 0 48px 100px;
+}
+.job__contact__img {
+  background-color: lightgrey;
+  padding: 70px;
+}
+.job__contact__title {
+  font-family: "Lato", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #5887D3;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+}
+.job__contact__explaination {
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+.job__contact .job__contact__form__email {
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0px 4px 10px 0px rgba(100, 100, 100, 0.2);
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+.job__contact .job__contact__form__email label {
+  font-family: "Lato", sans-serif;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.job__contact .job__contact__form__email input {
+  width: 80%;
+  border: none;
+  font-size: 20px;
+  outline: none;
+}
+.job__contact .job__contact__form__message {
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0px 4px 10px 0px rgba(100, 100, 100, 0.2);
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+.job__contact .job__contact__form__message label {
+  margin-bottom: 10px;
+  display: block;
+  font-family: "Lato", sans-serif;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.job__contact .job__contact__form__message textarea {
+  width: 80%;
+  border: none;
+  font-size: 20px;
+  outline: none;
+  resize: none;
+}
+.job__contact input[type=submit] {
+  display: inline-block;
+  background-color: white;
+  padding: 10px 100px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  color: #1D1D1D;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  transition: 0.2s background-color, color;
+}
+.job__contact input[type=submit]:hover {
+  background-color: #1D1D1D;
+  color: #F8F8F8;
+  transition: 0.2s background-color, color;
 }
 
 .redirection {
   text-align: center;
-  margin: 40px 48px;
+  margin: 0 48px 100px;
   font-family: "Montserrat", sans-serif;
 }
 .redirection__para {
@@ -781,9 +912,8 @@ body {
 .job__person__infos {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin: -180px 48px 40px;
+  align-items: center;
+  margin: -300px 48px 40px;
 }
 
 .job__person__infos__img {
@@ -792,7 +922,6 @@ body {
   border-radius: 150px;
   overflow: hidden;
   position: relative;
-  top: -130px;
 }
 .job__person__infos__img img {
   width: 300px;
@@ -837,4 +966,23 @@ body {
 .other__pics img {
   width: 100%;
   height: auto;
+}
+
+.question {
+  margin: 20px 48px;
+  font-family: "Lato", sans-serif;
+  font-size: 25px;
+}
+
+.paragraphe {
+  margin: 20px 48px 50px;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+}
+
+.interview__img {
+  margin: 0 48px 50px;
+}
+.interview__img img {
+  width: 100%;
 }
