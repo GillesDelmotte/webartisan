@@ -1,4 +1,11 @@
 <?php /*Template name: page des offres d'emplois*/ ?>
+<?php
+    if(!is_user_logged_in()){
+        $disabled = true;
+    }else{
+        $disabled = false;
+    }
+?>
 <?php get_header(); ?> 
 <div class="pageHeader deals">
     <div class="pageHeader__clip">
@@ -50,8 +57,69 @@
         )); ?> 
     </div>
 </div>
-
-
+<section class="newOffer">
+    <h2 class="newOffer__title">Publier une offre d‘emplois</h2>
+    <p class="newOffer__explanation">
+        Vous pouvez mettre ou ne pas mettre de description et de lien vers une offre externe au site, mais il en faut au moins un des deux.
+    </p>
+    <form action="" method="post" class="newOffer__form">
+        <div class="form__field name">
+            <label for="name" class="form__field__label">Nom de l'entreprise&nbsp;:</label>
+            <div class="form__field__input">
+                <input type="text" id="name" name="name" placeholder="Le nom de votre entreprise ici" <?= $disabled ? "disabled" : ""; ?>>
+            </div>
+        </div>
+        <div class="form__field title">
+            <label for="title" class="form__field__label">Titre de l'annonce&nbsp;:</label>
+            <div class="form__field__input">
+                <input type="text" id="title" name="title" placeholder="Le titre de l'annonce ici" <?= $disabled ? "disabled" : ""; ?> >
+            </div>
+        </div>
+        <div class="form__field city">
+            <label for="city" class="form__field__label">ville&nbsp;:</label>
+            <div class="form__field__input">
+                <input type="text" id="city" name="city" placeholder="Votre ville ici" <?= $disabled ? "disabled" : ""; ?>>
+            </div>
+        </div>
+        <div class="form__field email">
+            <label for="email" class="form__field__label">Email de contact&nbsp;:</label>
+            <div class="form__field__input">
+                <input type="text" id="email" name="email" placeholder="Votre email de contact ici" <?= $disabled ? "disabled" : ""; ?>>
+            </div>
+        </div>
+        <div class="form__field tel">
+            <label for="tel" class="form__field__label">Telephone&nbsp;:</label>
+            <div class="form__field__input">
+                <input type="text" id="tel" name="tel" placeholder="Votre numéro ici" <?= $disabled ? "disabled" : ""; ?>>
+            </div>
+        </div>
+        <div class="form__field desc">
+            <label for="desc" class="form__field__label">Description&nbsp;:</label>
+            <div class="form__field__input">
+                <textarea name="desc" id="desc" <?= $disabled ? "disabled" : ""; ?>></textarea>
+            </div>
+        </div>
+        <div class="form__field link">
+            <label for="link" class="form__field__label">Lien vers l'annonce&nbsp;:</label>
+            <div class="form__field__input">
+                <input type="text" id="link" name="link" placeholder="Votre lien ici" <?= $disabled ? "disabled" : ""; ?>>
+            </div>
+        </div>
+        <div class="form__field tags">
+            <label for="tags" class="form__field__label">Tags&nbsp;:</label>
+            <div class="form__field__input">
+                <input type="text" id="tags" name="tags" placeholder="Css, Html, Javascript" <?= $disabled ? "disabled" : ""; ?>>
+            </div>
+        </div>
+        <input type="submit" value="créer l'annonce" class="form__submit" <?= $disabled ? "disabled" : ""; ?>>
+    </form>
+    <?php if($disabled): ?>
+        <div class="disabled">
+            <p>Vous devez être connecté pour pouvoir faire une offre</p>
+            <a class="disabled__connection" href="<?= the_permalink(106); ?>">Me connecter</a>
+        </div>
+    <?php endif; ?>
+</section>
 </body>
 <footer class="pageFooter deals">
     
