@@ -13,11 +13,15 @@
 
 <header class="header">
     <a class="header__logo" href="<?= get_home_url();?>">
-        <?php $logo = get_field('logo__dark', 'options'); ?>
+        <?php $logo = get_field('logo__white', 'options'); ?>
         <?= wp_get_attachment_image( $logo, "full" ); ?>
     </a>
     <div class="header__nav" role="navigation">
         <?php wp_nav_menu(); ?>
-        <a class="header__connexion" href="<?= wp_login_url( $redirect ); ?> ">Connexion</a>
+        <?php if(!is_user_logged_in()): ?>
+            <a class="header__connexion" href="<?= the_permalink(106); ?>">Connexion</a>
+        <?php else: ?>
+            <a class="header__connexion" href="<?= wp_logout_url( get_permalink($post->ID) ); ?>">Déconnexion</a>
+        <?php endif; ?>
     </div>
 </header>
