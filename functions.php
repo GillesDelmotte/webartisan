@@ -42,3 +42,26 @@ function be_menu_item_classes( $classes, $item, $args ) {
 	return array_unique( $classes );
 }
 add_filter( 'nav_menu_css_class', 'be_menu_item_classes', 10, 3 );
+
+
+function post_login(){
+
+	$info = array();
+	$info['user_login'] = $_POST['name'];
+	$info['user_password'] = $_POST['password'];
+	$info['remember'] = true;
+
+	$user_signon = wp_signon( $info, false );
+
+	
+	if(!is_wp_error($user_signon)){
+        wp_redirect( home_url() ); exit;
+    }else{
+        wp_redirect( home_url( '/connexion-inscription' ) ); exit;	
+	}
+
+	
+}
+
+add_action('admin_post_post_login', 'post_login');
+add_action('admin_post_nopriv_post_login', 'post_login');
