@@ -244,6 +244,10 @@ body {
   background-color: #D35879;
 }
 
+.pageFooter.connexion .pageFooter__clip {
+  background-color: #9F4B5E;
+}
+
 .footer__nav {
   font-family: "Montserrat", sans-serif;
 }
@@ -829,6 +833,7 @@ body {
   border: none;
   font-size: 20px;
   outline: none;
+  font-family: "Montserrat", sans-serif;
 }
 .job__contact .job__contact__form__message {
   padding: 10px 20px;
@@ -850,6 +855,7 @@ body {
   font-size: 20px;
   outline: none;
   resize: none;
+  font-family: "Montserrat", sans-serif;
 }
 .job__contact input[type=submit] {
   display: inline-block;
@@ -892,6 +898,88 @@ body {
   background-color: #1D1D1D;
   color: #F8F8F8;
   transition: 0.2s background-color, color;
+}
+
+.header--connection {
+  display: flex;
+  justify-content: center;
+}
+
+.forms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  margin: 50px 123px;
+}
+.forms__title {
+  font-family: "Lato", sans-serif;
+  font-size: 30px;
+  color: #9F4B5E;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.forms .form__field {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 10px 0px rgba(100, 100, 100, 0.2);
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+.forms .form__field__label {
+  font-family: "Lato", sans-serif;
+  margin-right: 10px;
+}
+.forms .form__field__input {
+  display: inline-block;
+  flex: 1 1 auto;
+}
+.forms .form__field__input input {
+  width: 100%;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  outline: none;
+}
+.forms button {
+  display: inline-block;
+  background-color: white;
+  margin-right: 20px;
+  padding: 10px 50px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  color: #1D1D1D;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  transition: 0.2s background-color, color;
+}
+.forms button:hover {
+  background-color: #9F4B5E;
+  color: #F8F8F8;
+  transition: 0.2s background-color, color;
+}
+.forms .form__action__forgot {
+  font-family: "Montserrat", sans-serif;
+  color: #1D1D1D;
+  text-decoration: none;
+  display: inline-block;
+}
+.forms .form__action__forgot::after {
+  content: "";
+  height: 1px;
+  background-color: #1D1D1D;
+  width: 0%;
+  display: block;
+  margin-top: 3px;
+  transition: 0.3s width cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.forms .form__action__forgot:hover::after {
+  width: 100%;
+  transition: 0.3s width cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
 .sr-only {
@@ -985,4 +1073,119 @@ body {
 }
 .interview__img img {
   width: 100%;
+}
+
+.newOffer {
+  margin: 0 123px;
+  position: relative;
+}
+.newOffer__title {
+  font-family: "Lato", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #6B58D3;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+}
+.newOffer__explanation {
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  margin-bottom: 20px;
+  width: 70%;
+}
+.newOffer__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  grid-template-areas: "name title" "city desc" "email desc" "tel link" "tags button";
+  margin-bottom: 100px;
+}
+.newOffer__form .form__field__label {
+  font-family: "Lato", sans-serif;
+  margin: 0 5px 10px;
+  display: block;
+}
+.newOffer__form .form__field__input textarea {
+  display: block;
+  width: 100%;
+  resize: none;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  height: 124px;
+  font-size: 16px;
+  border: 1px solid #6B58D3;
+  background-color: initial;
+  border-radius: 4px;
+  outline: none;
+}
+.newOffer__form .form__field__input input {
+  outline: none;
+  width: 100%;
+  display: block;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: 1px solid #6B58D3;
+  background-color: initial;
+  border-radius: 4px;
+}
+.newOffer__form .form__field.name {
+  grid-area: name;
+}
+.newOffer__form .form__field.title {
+  grid-area: title;
+}
+.newOffer__form .form__field.city {
+  grid-area: city;
+}
+.newOffer__form .form__field.desc {
+  grid-area: desc;
+}
+.newOffer__form .form__field.email {
+  grid-area: email;
+}
+.newOffer__form .form__field.tel {
+  grid-area: tel;
+}
+.newOffer__form .form__field.link {
+  grid-area: link;
+}
+.newOffer__form .form__field.tags {
+  grid-area: tags;
+}
+.newOffer__form .form__submit {
+  grid-area: button;
+  display: block;
+  background-color: #6B58D3;
+  margin-top: 26px;
+  border-radius: 4px;
+  font-size: 17px;
+  color: white;
+  outline: none;
+}
+.newOffer .disabled {
+  background-color: rgba(107, 88, 211, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px 0px rgba(100, 100, 100, 0.2);
+}
+.newOffer .disabled p {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 20px;
+}
+.newOffer .disabled__connection {
+  color: white;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
 }
