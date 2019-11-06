@@ -1,10 +1,124 @@
-.homepage__actu{
+.highlighted{
+    position: relative;
+    z-index: 1;
+    margin: -280px 48px 0;
+   
     &__title{
         font-family: $font__title;
         font-size: 50px;
         font-weight: bold;
         color: $color__home;
         filter: drop-shadow(none);
+        margin-bottom: 30px;
+        
+        text-align: right;
+        text-transform: uppercase;
+    }
+    &__article{
+        overflow: hidden;
+        display: flex;
+        background-color: white;
+        border-radius: 4px;
+        img{
+            //float: left;
+            width: 50%;
+            height: auto;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        &__title {
+            margin-bottom: 10px;
+            font-family: $font__title;
+            font-size: 25px;
+            display: inline-block;
+            a{
+                color: $color__blue;
+                text-decoration: none;
+                &::after{
+                    content: '';
+                    display: block;
+                    height: 2px;
+                    background-color: $color__blue;
+                    width: 0%;
+                    margin-top: 3px;
+                    transition: 0.2s all;
+                    border-radius: 1px;
+                }
+                &:hover::after{
+                    width: 100%;
+                    transition: 0.2s all;
+                }
+            }
+        }
+
+        &__infos{
+            margin-bottom: 20px;
+            font-family: $font__content;
+            font-size: 12px;
+            display: flex;
+            span{
+                margin-right: 20px;
+                display: flex;
+                align-items: center;
+                &.article__date::before{
+                    content: '';
+                    display: block;
+                    //background-color: black;
+                    width: 15px;
+                    height: 15px;
+                    background-image: url("#{$icons}clock.svg");
+                    background-size: 100% 100%;
+                    margin-right: 5px;
+                }
+                &.article__author::before{
+                    content: '';
+                    margin-right: 5px;
+                    display: block;
+                    //background-color: black;
+                    width: 15px;
+                    height: 15px;
+                    background-image: url("#{$icons}man-user.svg");
+                    background-size: 100% 100%;
+                }
+            }
+        }
+
+        &__content{
+            margin: 50px
+        }
+
+        &__tags{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &__resume{
+            margin: 20px 0;
+            font-family: $font__content;
+            line-height: 22px;
+            font-size: 14px;
+        }
+        
+    }
+
+    &__link{
+        text-decoration: none;
+        font-family: $font__title;
+        margin-top: 30px;
+        display: inline-block;
+        text-align: right;
+        background-color: white;
+        padding: 10px 100px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        color: $color__black;
+        transition: 0.2s all ;
+
+        &:hover{
+            background-color: $color__home;
+            color: white;
+            transition: 0.2s all ;
+        }
     }
 }
 
