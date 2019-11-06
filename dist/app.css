@@ -685,6 +685,18 @@ body {
   font-family: "Montserrat", sans-serif;
   line-height: 1.5;
 }
+.offer__type {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+.offer__link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 
 .search__jobs {
   margin: -350px 48px 100px;
@@ -756,7 +768,6 @@ body {
   bottom: 0px;
   right: 0px;
   left: 0;
-  top: 270px;
   font-family: "Lato", sans-serif;
   color: white;
   text-align: right;
@@ -1097,8 +1108,14 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
-  grid-template-areas: "name title" "city desc" "email desc" "tel link" "tags button";
+  grid-template-areas: "type type" "name title" "city desc" "email desc" "tel link" "tags button";
   margin-bottom: 100px;
+}
+.newOffer__form .form__field.type {
+  margin: 20px 0;
+}
+.newOffer__form .form__field.type label {
+  margin-right: 30px;
 }
 .newOffer__form .form__field__label {
   font-family: "Lato", sans-serif;
@@ -1153,6 +1170,9 @@ body {
 .newOffer__form .form__field.tags {
   grid-area: tags;
 }
+.newOffer__form .form__field.type {
+  grid-area: type;
+}
 .newOffer__form .form__submit {
   grid-area: button;
   display: block;
@@ -1188,4 +1208,12 @@ body {
   font-family: "Lato", sans-serif;
   border-bottom: 2px solid white;
   padding-bottom: 5px;
+}
+
+.radio__input {
+  margin-right: 10px;
+}
+
+.type__label {
+  font-family: "Lato", sans-serif;
 }
