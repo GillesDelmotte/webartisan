@@ -65,3 +65,44 @@ function post_login(){
 
 add_action('admin_post_post_login', 'post_login');
 add_action('admin_post_nopriv_post_login', 'post_login');
+
+
+function post_newOffer(){
+
+	if(!is_user_logged_in()){
+		wp_redirect( home_url( '/offres-demplois-stage' ) ); exit;
+    }
+
+	$my_post = array(
+		'post_type' => 'jobs',
+		'post_title' => $_POST['title'],
+		'post_status' => 'publish',
+	  );
+	   
+	  // Insert the post into the database
+	 $post_id =  wp_insert_post( $my_post );
+
+	 $tags = explode(",", $_POST['tags']);
+
+	 $array = [];
+
+	 foreach($tags as $tag){
+		$array[] = $tag;
+	 }
+
+	 wp_set_post_tags( $post_id, $array);
+
+	 update_field( "offer__name", $_POST['name'], $post_id );
+	 update_field( "offer__type", $_POST['type'], $post_id );
+	 update_field( "offer__location", $_POST['city'], $post_id );
+	 update_field( "offer__phone", $_POST['tel'], $post_id );
+	 update_field( "offer__email", $_POST['email'], $post_id );
+	 update_field( "offer__content", $_POST['desc'], $post_id );
+
+
+	 wp_redirect( home_url( '/offres-demplois-stage' ) ); exit;
+	
+}
+
+add_action('admin_post_post_newOffer', 'post_newOffer');
+add_action('admin_post_nopriv_post_newOffer', 'post_newOffer');
