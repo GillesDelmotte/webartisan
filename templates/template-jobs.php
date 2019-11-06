@@ -60,7 +60,6 @@
     <p class="redirection__para">Vous chercher un emplois ou un stage ? Consultez notre page avec toutes les offres des agences</p>
     <div class="redirction__link">
         <a href="<?php the_permalink(14); ?>">Aller sur la page emplois</a>
-        <a href="<?php the_permalink(14); ?>">Aller sur la page stage</a>
     </div>
 </div>
 <section class="job__contact">
