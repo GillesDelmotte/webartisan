@@ -115,14 +115,20 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 15px;
-        grid-template-areas: "name title"
+        grid-template-areas: "type type"
+                             "name title"
                              "city desc"
                              "email desc"
                              "tel link"
                              "tags button";
         margin-bottom: 100px;
         .form__field{
-            //background-color: red;
+            &.type{
+                margin: 20px 0;
+                label{
+                    margin-right: 30px;
+                }
+            } 
             &__label{
                 font-family: $font__title;
                 margin: 0 5px 10px;
@@ -179,6 +185,9 @@
             &.tags{
                 grid-area: tags;
             }
+            &.type{
+                grid-area: type;
+            }
         }
         .form__submit{
             grid-area: button;
@@ -217,4 +226,12 @@
             padding-bottom: 5px;
         }
     }
+}
+
+.radio__input{
+    margin-right: 10px;
+}
+
+.type__label{
+    font-family: $font__title;
 }

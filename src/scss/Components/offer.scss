@@ -115,6 +115,20 @@
         font-family: $font__content;
         line-height: 1.5;
     }
+
+    &__type{
+        position: absolute;
+        top: 30px;
+        right: 30px;
+    }
+
+    &__link{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 }
 
 
