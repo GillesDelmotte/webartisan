@@ -1,7 +1,7 @@
 .search__jobs{
     margin: -350px 48px 100px;
     position: relative;
-    z-index: 1;
+    //z-index: 1;
     &__form{
         display: flex;
         align-items: center;
@@ -54,9 +54,9 @@
 }
 .persons{
     position: relative;
-    z-index: 1;
+    //z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 15px;
     margin: 0 48px 100px;
     min-height: 200px;
@@ -70,7 +70,7 @@
         bottom: 0px;
         right: 0px;
         left: 0;
-        //top: 70%;
+        top: 70%;
         font-family: $font__title;
         color: white;
         text-align: right;
@@ -139,7 +139,6 @@
         margin-bottom: 20px;
     }
     .job__contact__form__email{
-        // border: 1px solid $color__job;
         padding: 10px 20px;
         background-color: white;
         box-shadow: 0px 4px 10px 0px rgba(100,100, 100, 0.2);
@@ -163,8 +162,8 @@
         // border: 1px solid $color__job;
         padding: 10px 20px;
         background-color: white;
-       // display: flex;
-       // align-items: flex-start;
+        // display: flex;
+        // align-items: flex-start;
         box-shadow: 0px 4px 10px 0px rgba(100,100, 100, 0.2);
         border-radius: 3px;
         margin-bottom: 15px;
@@ -197,7 +196,7 @@
         border-radius: 3px;
         transition: 0.2s background-color,color;
         &:hover{
-            background-color: $color__black;
+            background-color: $color__job;
             color: $color__white;
             transition: 0.2s background-color,color;
         }

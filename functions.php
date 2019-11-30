@@ -129,3 +129,41 @@ function post_newsletter()
 
 add_action('admin_post_post_newsletter', 'post_newsletter');
 add_action('admin_post_nopriv_post_newsletter', 'post_newsletter');
+
+
+function post_newArticle()
+{
+
+	if (!is_user_logged_in()) {
+		wp_redirect(home_url('/forum'));
+		exit;
+	}
+
+	$my_post = array(
+		'post_type' => 'post',
+		'post_title' => $_POST['title'],
+		'post_status' => 'publish',
+	);
+
+	// Insert the post into the database
+	$post_id =  wp_insert_post($my_post);
+
+	$tags = explode(",", $_POST['tags']);
+
+	$array = [];
+
+	foreach ($tags as $tag) {
+		$array[] = $tag;
+	}
+
+	wp_set_post_tags($post_id, $array);
+
+	update_field("forum__resume", $_POST['resume'], $post_id);
+	update_field("forum__wysiwyg", $_POST['desc'], $post_id);
+
+	wp_redirect(home_url('/forum'));
+	exit;
+}
+
+add_action('admin_post_post_newArticle', 'post_newArticle');
+add_action('admin_post_nopriv_post_newArticle', 'post_newArticle');

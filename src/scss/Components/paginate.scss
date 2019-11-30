@@ -1,5 +1,7 @@
 .paginate{
     filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
+    position: relative;
+    z-index: -1;
     &__clip{
         clip-path: polygon(0 0, 100% 35%, 100% 100%, 0% 100%);
         padding: 300px 0 50px;
@@ -34,4 +36,7 @@
 }
 .paginate.paginate__jobs .paginate__clip{
     background-color: $color__job;
+}
+.paginate.forum .paginate__clip{
+    background-color: $color__forum;
 }

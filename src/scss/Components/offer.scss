@@ -1,7 +1,7 @@
 .offers{
     margin: -350px 48px 100px; 
     position: relative;
-    z-index: 1;
+    //z-index: 1;
     
 }
 
@@ -99,6 +99,17 @@
                 width: 20px;
                 height: 20px;
                 background-image: url("#{$icons}phone.svg");
+                background-size: 100% 100%;
+                
+            }
+            &.offer__comments::before{
+                content: '';
+                margin-right: 5px;
+                display: block;
+                //background-color: black;
+                width: 20px;
+                height: 20px;
+                background-image: url("#{$icons}comment.svg");
                 background-size: 100% 100%;
                 
             }

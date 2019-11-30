@@ -1,6 +1,18 @@
-.connection{
-}
-
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  .wrapper {
+    min-height: 100%;
+  
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -313px;
+  }
+  .footer,
+  .push {
+    height: 313px;
+  }
 .header--connection{
     display: flex;
     justify-content: center;
@@ -8,9 +20,10 @@
 
 .forms{
     display: grid;
+    margin: 100px auto;
     grid-template-columns: 1fr 1fr; 
     gap: 90px;
-    margin: 50px 123px;
+    padding: 0 123px;
     &__title{
         font-family: $font__title;
         font-size: 30px;
