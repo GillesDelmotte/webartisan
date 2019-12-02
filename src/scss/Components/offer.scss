@@ -1,9 +1,11 @@
 .offers{
-    margin: -350px 48px 100px; 
+    margin: -350px 48px 150px; 
     position: relative;
-    //z-index: 1;
+    min-height: 400px;
     
 }
+
+
 
 .offer{
     overflow: auto;
@@ -122,7 +124,7 @@
 
     &__content{
         position: relative;
-        z-index: 1;
+        //z-index: 1;
         font-family: $font__content;
         line-height: 1.5;
     }
@@ -131,6 +133,26 @@
         position: absolute;
         top: 30px;
         right: 30px;
+        &.emplois i::before{
+            content: '';
+            margin-right: 5px;
+            display: block;
+            //background-color: black;
+            width: 30px;
+            height: 30px;
+            background-image: url("#{$icons}portfolio.svg");
+            background-size: 100% 100%;
+        }
+        &.stage i::before{
+            content: '';
+            margin-right: 5px;
+            display: block;
+            //background-color: black;
+            width: 30px;
+            height: 30px;
+            background-image: url("#{$icons}education.svg");
+            background-size: 100% 100%;
+        }
     }
 
     &__link{
@@ -142,4 +164,175 @@
     }
 }
 
+.newOffer{
+    margin: 0 123px;
+    position: relative;
 
+    &__title{
+        font-family: $font__title;
+        font-size: 40px;
+        font-weight: bold;
+        color: $color__emplois;
+        margin-bottom: 20px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+    }
+    &__explanation{
+        font-family: $font__content;
+        line-height: 20px;
+        margin-bottom: 20px;
+        width: 70%;
+    }
+    &__form{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 15px;
+        grid-template-areas: "type type"
+                             "name title"
+                             "city desc"
+                             "email desc"
+                             "tel link"
+                             "tags button";
+        margin-bottom: 100px;
+        .form__field{
+            &.type{
+                margin: 20px 0;
+                label{
+                    margin-right: 30px;
+                }
+            } 
+            &__label{
+                font-family: $font__title;
+                margin: 0 5px 10px;
+                display: block;
+            }
+            &__input textarea{
+                display: block;
+                width: 100%;
+                resize: none;
+                padding: 10px 20px;
+                box-sizing: border-box;
+                height: 124px;
+                font-size: 16px;
+                border: 1px solid $color__emplois;
+                background-color: initial;
+                border-radius: 4px;
+                outline: none;
+
+
+            }
+            &__input input{
+                outline: none;
+                width: 100%;
+                display: block;
+                padding: 10px 20px;
+                box-sizing: border-box;
+                font-size: 16px;
+                border: 1px solid $color__emplois;
+                background-color: initial;
+                border-radius: 4px;
+                
+            }
+            &.name{
+                grid-area: name;
+            }
+            &.title{
+                grid-area: title;
+            }
+            &.city{
+                grid-area: city;
+            }
+            &.desc{
+                grid-area: desc;
+            }
+            &.email{
+                grid-area: email;
+            }
+            &.tel{
+                grid-area: tel;
+            }
+            &.link{
+                grid-area: link;
+            }
+            &.tags{
+                grid-area: tags;
+            }
+            &.type{
+                grid-area: type;
+            }
+        }
+        .form__submit{
+            grid-area: button;
+            display: block;
+            background-color: $color__emplois;
+            margin-top: 26px;
+            border-radius: 4px;
+            font-size: 17px;
+            color: white;
+            outline: none;
+        }
+    }
+    .disabled{
+        background-color: rgba($color: $color__emplois, $alpha: 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        border-radius: 4px;
+        box-shadow: 0px 4px 10px 0px rgba(100,100, 100, 0.2);
+        p{
+            color: white;
+            font-family: $font__content;
+            margin-bottom: 20px;
+        }
+        &__connection{
+            color: white;
+            text-decoration: none;
+            font-family: $font__title;
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+    }
+}
+
+.radio__input{
+    margin-right: 10px;
+}
+
+.type__label{
+    font-family: $font__title;
+}
+
+
+@media(max-width: 1000px){
+    .newOffer{
+        margin: 0 48px;
+    }
+}
+
+@media(max-width: 850px){
+
+    .newOffer__explanation{
+        width: 100%;
+    }
+    .newOffer__form{
+        grid-template-columns: 1fr;
+        grid-template-areas: "type"
+                             "name" 
+                             "title"
+                             "city" 
+                             "email"
+                             "tel" 
+                             "link"
+                             "tags" 
+                             "desc"
+                             "button";
+        .form__submit{
+            padding: 15px 0;
+        }
+    }
+}

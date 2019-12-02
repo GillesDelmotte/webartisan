@@ -2,6 +2,7 @@
     position: relative;
     //z-index: 1;
     margin: -350px 48px 150px;
+    min-height: 400px;
     .subject{
         background-color: white;
         margin: 0 48px 20px;
@@ -51,7 +52,7 @@
             &__input textarea{
                 display: block;
                 width: 100%;
-                resize: none;
+                resize: vertical;
                 padding: 10px 20px;
                 box-sizing: border-box;
                 height: 124px;

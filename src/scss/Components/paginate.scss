@@ -37,6 +37,9 @@
 .paginate.paginate__jobs .paginate__clip{
     background-color: $color__job;
 }
+.paginate.paginate__snippet .paginate__clip{
+    background-color: $color__snippet;
+}
 .paginate.forum .paginate__clip{
     background-color: $color__forum;
 }

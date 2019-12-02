@@ -15,8 +15,27 @@
 <div class="container">
     <section class="articles">
         <h2 class="sr-only">Tous les articles</h2>
+        <div class="filter actus">
+            <input type="checkbox" name="filter" class="sr-only filter__input" id="filter">
+            <label for="filter" class="filter__button--open"><i></i></label>
+            <div class="filter__window">
+                <label for="filter" class="filter__button--close">
+                    <i></i>
+                </label>
+                <h3 class="filter__window__title">Filtre</h3>
+                <form action="">
+                    <div class="form__field title">
+                        <label required for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
+                        <div class="form__field__input">
+                            <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
+                        </div>
+                    </div>
+                    <button type="submit" class="form__submit">rechercher</button>
+                </form>
+            </div>
+        </div>
         <?php $currentPage = get_query_var('paged');
-        $actus = new WP_Query(array('post_type' => 'actualities', 'posts_per_page' => 4, 'paged' => $currentPage)); ?>
+        $actus = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'actualities', 'posts_per_page' => 4, 'paged' => $currentPage)); ?>
         <?php while ($actus->have_posts()) : $actus->the_post(); ?>
             <article class="article">
                 <h2 class="article__title"><a href="<?= the_permalink(); ?>"><?= the_title(); ?></a></h2>

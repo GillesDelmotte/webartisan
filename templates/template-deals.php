@@ -22,8 +22,27 @@ if (!is_user_logged_in()) {
 <div class="container">
     <section class="offers">
         <h2 class="sr-only">Toutes les offres d'emplois</h2>
+        <div class="filter deals">
+            <input type="checkbox" name="filter" class="sr-only filter__input" id="filter">
+            <label for="filter" class="filter__button--open"><i></i></label>
+            <div class="filter__window">
+                <label for="filter" class="filter__button--close">
+                    <i></i>
+                </label>
+                <h3 class="filter__window__title">Filtre</h3>
+                <form action="">
+                    <div class="form__field title">
+                        <label required for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
+                        <div class="form__field__input">
+                            <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
+                        </div>
+                    </div>
+                    <button type="submit" class="form__submit">rechercher</button>
+                </form>
+            </div>
+        </div>
         <?php $currentPage = get_query_var('paged');
-        $offers = new WP_Query(array('post_type' => 'jobs', 'posts_per_page' => 3, 'paged' => $currentPage)); ?>
+        $offers = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'jobs', 'posts_per_page' => 6, 'paged' => $currentPage)); ?>
         <?php while ($offers->have_posts()) : $offers->the_post(); ?>
             <article class="offer">
                 <div class="offer__img"><?= get_avatar(get_the_author_id()); ?></div>
@@ -47,8 +66,9 @@ if (!is_user_logged_in()) {
                         <span class="offer__email"><a href="mailto:<?= get_field('offer__email') ?>"><?= get_field('offer__email') ?></a></span><span class="offer__phone"><?= get_field('offer__phone'); ?>
                     </div>
                 </div>
-                <div class="offer__type">
-                    <p><?= get_field('offer__type'); ?></p>
+                <div class="offer__type <?= get_field('offer__type') === 'emplois' ? 'emplois' : 'stage'; ?>">
+                    <i></i>
+                    <p class="sr-only"><?= get_field('offer__type'); ?></p>
                 </div>
                 <?php if (get_field("offer__link")) : ?>
                     <a href="<?= get_field("offer__link"); ?>" class="offer__link"></a>

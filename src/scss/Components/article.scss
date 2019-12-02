@@ -2,16 +2,14 @@
     position: relative;
     //z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
     gap: 15px;
-    margin: -350px 48px 100px;
-    
-    
+    min-height: 430px;
+    margin: -350px 48px 100px;  
 
 }
 
 .article{
-    max-width: 585px;
     background-color: #fff;
     padding: 30px 0;
     border-radius: 3px;
@@ -115,8 +113,8 @@
 
 .actu__thumbnail{
     position: relative;
-    z-index: 1;
-    margin: -470px 48px 0;
+    //z-index: 1;
+    margin: -440px 48px 0;
     img{
         width: 100%;
         height: auto;
@@ -126,7 +124,7 @@
 
 .actu__content{
     position: relative;
-    z-index: 1;
+    //z-index: 1;
     margin: 30px 123px;
     font-family: $font__content;
     line-height: 1.5;
@@ -134,7 +132,7 @@
 
 .actu__infos, .actu__tags{
     position: relative;
-    z-index: 1;
+    //z-index: 1;
 }
 
 

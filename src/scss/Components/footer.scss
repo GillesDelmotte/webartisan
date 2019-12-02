@@ -46,7 +46,7 @@
         &-item{
             position: relative;
             
-            margin: 12.5px 0;
+            margin: 17.5px 0;
             
             &.current_page_item{
                 background-color: black;
@@ -155,4 +155,10 @@
 
     }
     
+}
+
+@media(max-width: 1040px){
+    .footer__newsletter{
+        width: 400px;
+    }
 }

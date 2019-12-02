@@ -120,6 +120,8 @@ body{
     &__logo{
         img{
             width: 150px;
+            position: relative;
+            z-index: 4;
         }
     }
     &__connexion{

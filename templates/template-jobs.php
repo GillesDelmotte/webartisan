@@ -22,12 +22,12 @@ $jobs = new WP_Query(array('s' => $_GET['recherche'], 'post_type' => 'worker', '
         <form action="" class="search__jobs__form" method="get">
             <input type="search" value="<?= $_GET['recherche']; ?>" placeholder="Rechercher" class="search__jobs__form__input search-autocomplete" name="recherche">
             <button class="search__jobs__form__button"><span class="sr-only">Rechercher</span>
-
             </button>
         </form>
     </div>
     <section class="jobs">
         <h2 class="sr-only">Tous les métiers du web</h2>
+
         <ul class="persons">
             <?php while ($jobs->have_posts()) : $jobs->the_post(); ?>
                 <li class="person">

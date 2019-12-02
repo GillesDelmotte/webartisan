@@ -209,6 +209,8 @@ body {
 }
 .header__logo img {
   width: 150px;
+  position: relative;
+  z-index: 4;
 }
 .header__connexion {
   margin-left: 50px;
@@ -424,7 +426,7 @@ body {
 }
 .footer__nav .menu-item {
   position: relative;
-  margin: 12.5px 0;
+  margin: 17.5px 0;
 }
 .footer__nav .menu-item.current_page_item {
   background-color: black;
@@ -524,16 +526,21 @@ body {
   transition: 0.2s fill;
 }
 
+@media (max-width: 1040px) {
+  .footer__newsletter {
+    width: 400px;
+  }
+}
 .articles {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   gap: 15px;
+  min-height: 430px;
   margin: -350px 48px 100px;
 }
 
 .article {
-  max-width: 585px;
   background-color: #fff;
   padding: 30px 0;
   border-radius: 3px;
@@ -629,8 +636,7 @@ body {
 
 .actu__thumbnail {
   position: relative;
-  z-index: 1;
-  margin: -470px 48px 0;
+  margin: -440px 48px 0;
 }
 .actu__thumbnail img {
   width: 100%;
@@ -639,7 +645,6 @@ body {
 
 .actu__content {
   position: relative;
-  z-index: 1;
   margin: 30px 123px;
   font-family: "Montserrat", sans-serif;
   line-height: 1.5;
@@ -647,7 +652,6 @@ body {
 
 .actu__infos, .actu__tags {
   position: relative;
-  z-index: 1;
 }
 
 .single__actu .actu__infos {
@@ -728,6 +732,10 @@ body {
 
 .paginate.paginate__jobs .paginate__clip {
   background-color: #5887D3;
+}
+
+.paginate.paginate__snippet .paginate__clip {
+  background-color: #D35879;
 }
 
 .paginate.forum .paginate__clip {
@@ -874,8 +882,9 @@ body {
 }
 
 .offers {
-  margin: -350px 48px 100px;
+  margin: -350px 48px 150px;
   position: relative;
+  min-height: 400px;
 }
 
 .offer {
@@ -983,7 +992,6 @@ body {
 }
 .offer__content {
   position: relative;
-  z-index: 1;
   font-family: "Montserrat", sans-serif;
   line-height: 1.5;
 }
@@ -991,6 +999,24 @@ body {
   position: absolute;
   top: 30px;
   right: 30px;
+}
+.offer__type.emplois i::before {
+  content: "";
+  margin-right: 5px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/portfolio.svg");
+  background-size: 100% 100%;
+}
+.offer__type.stage i::before {
+  content: "";
+  margin-right: 5px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/education.svg");
+  background-size: 100% 100%;
 }
 .offer__link {
   position: absolute;
@@ -1000,6 +1026,156 @@ body {
   left: 0;
 }
 
+.newOffer {
+  margin: 0 123px;
+  position: relative;
+}
+.newOffer__title {
+  font-family: "Lato", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #6B58D3;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+}
+.newOffer__explanation {
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  margin-bottom: 20px;
+  width: 70%;
+}
+.newOffer__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  grid-template-areas: "type type" "name title" "city desc" "email desc" "tel link" "tags button";
+  margin-bottom: 100px;
+}
+.newOffer__form .form__field.type {
+  margin: 20px 0;
+}
+.newOffer__form .form__field.type label {
+  margin-right: 30px;
+}
+.newOffer__form .form__field__label {
+  font-family: "Lato", sans-serif;
+  margin: 0 5px 10px;
+  display: block;
+}
+.newOffer__form .form__field__input textarea {
+  display: block;
+  width: 100%;
+  resize: none;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  height: 124px;
+  font-size: 16px;
+  border: 1px solid #6B58D3;
+  background-color: initial;
+  border-radius: 4px;
+  outline: none;
+}
+.newOffer__form .form__field__input input {
+  outline: none;
+  width: 100%;
+  display: block;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: 1px solid #6B58D3;
+  background-color: initial;
+  border-radius: 4px;
+}
+.newOffer__form .form__field.name {
+  grid-area: name;
+}
+.newOffer__form .form__field.title {
+  grid-area: title;
+}
+.newOffer__form .form__field.city {
+  grid-area: city;
+}
+.newOffer__form .form__field.desc {
+  grid-area: desc;
+}
+.newOffer__form .form__field.email {
+  grid-area: email;
+}
+.newOffer__form .form__field.tel {
+  grid-area: tel;
+}
+.newOffer__form .form__field.link {
+  grid-area: link;
+}
+.newOffer__form .form__field.tags {
+  grid-area: tags;
+}
+.newOffer__form .form__field.type {
+  grid-area: type;
+}
+.newOffer__form .form__submit {
+  grid-area: button;
+  display: block;
+  background-color: #6B58D3;
+  margin-top: 26px;
+  border-radius: 4px;
+  font-size: 17px;
+  color: white;
+  outline: none;
+}
+.newOffer .disabled {
+  background-color: rgba(107, 88, 211, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px 0px rgba(100, 100, 100, 0.2);
+}
+.newOffer .disabled p {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 20px;
+}
+.newOffer .disabled__connection {
+  color: white;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
+}
+
+.radio__input {
+  margin-right: 10px;
+}
+
+.type__label {
+  font-family: "Lato", sans-serif;
+}
+
+@media (max-width: 1000px) {
+  .newOffer {
+    margin: 0 48px;
+  }
+}
+@media (max-width: 850px) {
+  .newOffer__explanation {
+    width: 100%;
+  }
+
+  .newOffer__form {
+    grid-template-columns: 1fr;
+    grid-template-areas: "type" "name" "title" "city" "email" "tel" "link" "tags" "desc" "button";
+  }
+  .newOffer__form .form__submit {
+    padding: 15px 0;
+  }
+}
 .search__jobs {
   margin: -350px 48px 100px;
   position: relative;
@@ -1318,6 +1494,7 @@ html, body {
 .subjects {
   position: relative;
   margin: -350px 48px 150px;
+  min-height: 400px;
 }
 .subjects .subject {
   background-color: white;
@@ -1364,7 +1541,7 @@ html, body {
 .newArticle__form .form__field__input textarea {
   display: block;
   width: 100%;
-  resize: none;
+  resize: vertical;
   padding: 10px 20px;
   box-sizing: border-box;
   height: 124px;
@@ -1433,6 +1610,119 @@ html, body {
   font-family: "Lato", sans-serif;
   border-bottom: 2px solid white;
   padding-bottom: 5px;
+}
+
+.filter {
+  position: absolute;
+  right: 20px;
+  top: -90px;
+}
+.filter__button--open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.filter__button--open i {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/filter.svg");
+  background-size: 100% 100%;
+}
+.filter__button--close {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 15px;
+  height: 15px;
+  background-image: url("/wp-content/themes/webartisan/dist/icons/delete.svg");
+  background-size: 100% 100%;
+}
+.filter__window {
+  box-sizing: border-box;
+  position: relative;
+  display: none;
+  z-index: 10;
+  background-color: white;
+  position: fixed;
+  width: 600px;
+  top: 100px;
+  left: calc(50% - 300px);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding: 20px;
+}
+.filter__window__title {
+  font-family: "Lato", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+}
+.filter__input:checked ~ .filter__window {
+  display: block;
+}
+.filter .form__field__input input {
+  outline: none;
+  width: 100%;
+  display: block;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: 1px solid black;
+  background-color: initial;
+  border-radius: 4px;
+}
+.filter .form__field__label {
+  font-family: "Lato", sans-serif;
+  margin: 0 5px 10px;
+  display: block;
+}
+.filter .form__submit {
+  display: block;
+  background-color: black;
+  margin-top: 26px;
+  border-radius: 4px;
+  font-size: 17px;
+  color: white;
+  outline: none;
+  width: 100%;
+  padding: 10px 0;
+}
+.filter.actus .filter__window__title {
+  color: #D35858;
+}
+.filter.actus .filter__window input {
+  border-color: #D35858;
+}
+.filter.actus .filter__window .form__submit {
+  background-color: #D35858;
+}
+.filter.deals .filter__window__title {
+  color: #6B58D3;
+}
+.filter.deals .filter__window input {
+  border-color: #6B58D3;
+}
+.filter.deals .filter__window .form__submit {
+  background-color: #6B58D3;
+}
+.filter.forum .filter__window__title {
+  color: #D38758;
+}
+.filter.forum .filter__window input {
+  border-color: #D38758;
+}
+.filter.forum .filter__window .form__submit {
+  background-color: #D38758;
 }
 
 .sr-only {
@@ -1526,136 +1816,4 @@ html, body {
 }
 .interview__img img {
   width: 100%;
-}
-
-.newOffer {
-  margin: 0 123px;
-  position: relative;
-}
-.newOffer__title {
-  font-family: "Lato", sans-serif;
-  font-size: 40px;
-  font-weight: bold;
-  color: #6B58D3;
-  margin-bottom: 20px;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
-}
-.newOffer__explanation {
-  font-family: "Montserrat", sans-serif;
-  line-height: 20px;
-  margin-bottom: 20px;
-  width: 70%;
-}
-.newOffer__form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 15px;
-  grid-template-areas: "type type" "name title" "city desc" "email desc" "tel link" "tags button";
-  margin-bottom: 100px;
-}
-.newOffer__form .form__field.type {
-  margin: 20px 0;
-}
-.newOffer__form .form__field.type label {
-  margin-right: 30px;
-}
-.newOffer__form .form__field__label {
-  font-family: "Lato", sans-serif;
-  margin: 0 5px 10px;
-  display: block;
-}
-.newOffer__form .form__field__input textarea {
-  display: block;
-  width: 100%;
-  resize: none;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  height: 124px;
-  font-size: 16px;
-  border: 1px solid #6B58D3;
-  background-color: initial;
-  border-radius: 4px;
-  outline: none;
-}
-.newOffer__form .form__field__input input {
-  outline: none;
-  width: 100%;
-  display: block;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  font-size: 16px;
-  border: 1px solid #6B58D3;
-  background-color: initial;
-  border-radius: 4px;
-}
-.newOffer__form .form__field.name {
-  grid-area: name;
-}
-.newOffer__form .form__field.title {
-  grid-area: title;
-}
-.newOffer__form .form__field.city {
-  grid-area: city;
-}
-.newOffer__form .form__field.desc {
-  grid-area: desc;
-}
-.newOffer__form .form__field.email {
-  grid-area: email;
-}
-.newOffer__form .form__field.tel {
-  grid-area: tel;
-}
-.newOffer__form .form__field.link {
-  grid-area: link;
-}
-.newOffer__form .form__field.tags {
-  grid-area: tags;
-}
-.newOffer__form .form__field.type {
-  grid-area: type;
-}
-.newOffer__form .form__submit {
-  grid-area: button;
-  display: block;
-  background-color: #6B58D3;
-  margin-top: 26px;
-  border-radius: 4px;
-  font-size: 17px;
-  color: white;
-  outline: none;
-}
-.newOffer .disabled {
-  background-color: rgba(107, 88, 211, 0.8);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  border-radius: 4px;
-  box-shadow: 0px 4px 10px 0px rgba(100, 100, 100, 0.2);
-}
-.newOffer .disabled p {
-  color: white;
-  font-family: "Montserrat", sans-serif;
-  margin-bottom: 20px;
-}
-.newOffer .disabled__connection {
-  color: white;
-  text-decoration: none;
-  font-family: "Lato", sans-serif;
-  border-bottom: 2px solid white;
-  padding-bottom: 5px;
-}
-
-.radio__input {
-  margin-right: 10px;
-}
-
-.type__label {
-  font-family: "Lato", sans-serif;
 }
