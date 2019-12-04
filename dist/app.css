@@ -281,7 +281,7 @@ body {
           filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
 }
 .pageHeader__clip {
-  height: 800px;
+  padding-bottom: 400px;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 35%, 0% 100%);
           clip-path: polygon(0 0, 100% 0, 100% 35%, 0% 100%);
   padding-top: 150px;
@@ -314,6 +314,11 @@ body {
   line-height: 35px;
   width: 50%;
 }
+.pageHeader__clip .pageHeader__tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 123px;
+}
 
 .pageHeader.homepage .pageHeader__clip {
   background-color: #58D39A;
@@ -337,6 +342,10 @@ body {
 
 .pageHeader.snippets .pageHeader__clip {
   background-color: #D35879;
+}
+
+.pageHeader.mdn .pageHeader__clip {
+  background-color: #1d7a4f;
 }
 
 @media (max-width: 1280px) {
@@ -416,6 +425,10 @@ body {
 
 .pageFooter.connexion .pageFooter__clip {
   background-color: #9F4B5E;
+}
+
+.pageFooter.mdn .pageFooter__clip {
+  background-color: #1d7a4f;
 }
 
 .footer__nav {
@@ -654,6 +667,10 @@ body {
   position: relative;
 }
 
+.single__actu .actu__content {
+  border-bottom: 2px solid #1D1D1D;
+  padding-bottom: 50px;
+}
 .single__actu .actu__infos {
   margin: 20px 123px;
   margin-bottom: 20px;
@@ -1025,6 +1042,10 @@ body {
   bottom: 0;
   left: 0;
 }
+.offer .comment__content {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.4;
+}
 
 .newOffer {
   margin: 0 123px;
@@ -1037,6 +1058,8 @@ body {
   color: #6B58D3;
   margin-bottom: 20px;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 .newOffer__explanation {
   font-family: "Montserrat", sans-serif;
@@ -1612,6 +1635,17 @@ html, body {
   padding-bottom: 5px;
 }
 
+.forum__content {
+  position: relative;
+  margin: -350px 123px 20px;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  background-color: white;
+  border-radius: 3px;
+  padding: 50px;
+  box-shadow: 0px 4px 10px 0px rgba(100, 100, 100, 0.2);
+}
+
 .filter {
   position: absolute;
   right: 20px;
@@ -1723,6 +1757,124 @@ html, body {
 }
 .filter.forum .filter__window .form__submit {
   background-color: #D38758;
+}
+
+.addComment {
+  margin: 70px 123px;
+  position: relative;
+}
+.addComment__title {
+  font-family: "Lato", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.addComment .form__field__label {
+  font-family: "Lato", sans-serif;
+  margin: 0 20px 15px;
+  display: block;
+}
+.addComment .form__field__input textarea {
+  display: block;
+  width: 100%;
+  resize: vertical;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  height: 124px;
+  font-size: 16px;
+  border: 1px solid black;
+  background-color: initial;
+  border-radius: 4px;
+  outline: none;
+}
+.addComment .form__submit {
+  display: block;
+  background-color: black;
+  margin-top: 26px;
+  border-radius: 4px;
+  font-size: 17px;
+  color: white;
+  outline: none;
+  width: 100%;
+  padding: 15px 0;
+}
+.addComment .disabled {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px 0px rgba(100, 100, 100, 0.2);
+}
+.addComment .disabled p {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 20px;
+}
+.addComment .disabled__connection {
+  color: white;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
+}
+
+.addComment.actu .addComment__title {
+  color: #D35858;
+}
+.addComment.actu .form__submit {
+  background-color: #D35858;
+}
+.addComment.actu .form__field__input textarea {
+  border-color: #D35858;
+}
+.addComment.actu .disabled {
+  background-color: rgba(211, 88, 88, 0.8);
+}
+
+.addComment.forum .addComment__title {
+  color: #D38758;
+}
+.addComment.forum .form__submit {
+  background-color: #D38758;
+}
+.addComment.forum .form__field__input textarea {
+  border-color: #D38758;
+}
+.addComment.forum .disabled {
+  background-color: rgba(211, 135, 88, 0.8);
+}
+
+.comments {
+  margin: 70px 123px;
+  position: relative;
+}
+.comments__title {
+  font-family: "Lato", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.comments.actu .comments__title {
+  color: #D35858;
+}
+
+.comments.forum .comments__title {
+  color: #D38758;
 }
 
 .sr-only {

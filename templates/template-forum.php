@@ -44,14 +44,14 @@ if (!is_user_logged_in()) {
             </div>
         </div>
         <?php $currentPage = get_query_var('paged');
-        $articles = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'post', 'posts_per_page' => 6, 'paged' => $currentPage)); ?>
+        $articles = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'forum', 'posts_per_page' => 6, 'paged' => $currentPage)); ?>
         <?php while ($articles->have_posts()) : $articles->the_post(); ?>
             <article class="offer">
                 <div class="offer__img"><?= get_avatar(get_the_author_id()); ?></div>
                 <div class="offer__all">
                     <h2 class="offer__title"><?php the_title(); ?></h2>
                     <div class="offer__infos">
-                        <span class="offer__company"><?= get_the_author(); ?></span><span class="offer__date">Le <?= get_the_date(); ?></span><span class="offer__comments"><?= get_comments_number(); ?> commentaires</span>
+                        <span class="offer__company"><?= get_the_author(); ?></span><span class="offer__date">Le <?= get_the_date(); ?></span><span class="offer__comments"><?= $number = count(get_field('comments')); ?> <?= $number > 1 ? 'commentaires' : 'commentaire'; ?></span>
                     </div>
                     <ul class="offer__tags">
                         <?php $tags = get_the_tags(get_the_ID()); ?>

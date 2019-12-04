@@ -9,7 +9,7 @@
             ],
             'description' => 'Toutes les actus de webartisan',
             'public' => true,
-            'menu_position' => 5,
+            'menu_position' => 1,
             'menu_icon' => 'dashicons-welcome-write-blog',
             'rewrite' => ['slug' => 'actualities'],
             'taxonomies' => array('post_tag')
@@ -23,7 +23,7 @@
             ],
             'description' => 'Toutes les offres d‘emplois de webartian',
             'public' => true,
-            'menu_position' => 5,
+            'menu_position' => 2,
             'menu_icon' => 'dashicons-businessman',
             'rewrite' => ['slug' => 'jobs'],
             'taxonomies' => array('post_tag')
@@ -37,9 +37,23 @@
             ],
             'description' => 'Tous les métiers',
             'public' => true,
-            'menu_position' => 5,
+            'menu_position' => 3,
             'menu_icon' => 'dashicons-welcome-learn-more',
             'rewrite' => ['slug' => 'worker'],
+            'taxonomies' => array('post_tag')
+        ]);
+
+        register_post_type('forum', [
+            'label' => 'les sujets du forum',
+            'labels' => [
+                'singular-name' => 'sujet du forum',
+                'add_new_item' => 'ajouter un nouveau sujet'
+            ],
+            'description' => 'Tous les sujets',
+            'public' => true,
+            'menu_position' => 4,
+            'menu_icon' => 'dashicons-welcome-learn-more',
+            'rewrite' => ['slug' => 'forum'],
             'taxonomies' => array('post_tag')
         ]);
     }

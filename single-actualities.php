@@ -1,3 +1,10 @@
+<?php
+if (!is_user_logged_in()) {
+    $disabled = true;
+} else {
+    $disabled = false;
+}
+?>
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <article class="single__actu">
@@ -32,7 +39,53 @@
                 </div>
             </div>
         </article>
-
+        <div class="container">
+            <section class="comments actu">
+                <h2 class="comments__title">
+                    Commentaires
+                </h2>
+                <?php if (have_rows('comments')) : while (have_rows('comments')) : the_row(); ?>
+                        <article class="offer">
+                            <div class="offer__img"><?= get_avatar(get_sub_field('comment__author')); ?></div>
+                            <div class="offer__all">
+                                <h2 class="offer__title">
+                                    <?php $user = get_user_by('id', get_sub_field('comment__author')); ?>
+                                    <?= $user->display_name; ?>
+                                </h2>
+                                <div class="offer__infos">
+                                    <span class="offer__date">Le <?= get_sub_field('comment__date'); ?></span>
+                                </div>
+                                <p class="comment__content">
+                                    <?= get_sub_field('comment'); ?>
+                                </p>
+                            </div>
+                        </article>
+                <?php endwhile;
+                        endif; ?>
+            </section>
+            <section class="addComment actu">
+                <h2 class="addComment__title">
+                    Poster un commentaire
+                </h2>
+                <form action="<?= admin_url('admin-post.php'); ?>" method="post">
+                    <input type="hidden" name="action" value="post_newComment">
+                    <input type="hidden" name="id" value="<?= get_the_ID(); ?>">
+                    <div class="form__field">
+                        <label for="comment" class="form__field__label">Commentaire&nbsp;:</label>
+                        <div class="form__field__input">
+                            <textarea name="comment" id="comment" required <?= $disabled ? "disabled" : ""; ?>></textarea>
+                        </div>
+                    </div>
+                    <input type="submit" value="Poster le commentaire" class="form__submit" <?= $disabled ? "disabled" : ""; ?>>
+                </form>
+                <?php if ($disabled) : ?>
+                    <div class="disabled">
+                        <p>Vous devez être connecté pour pouvoir poster un commentaire</p>
+                        <a class="disabled__connection" href="<?= the_permalink(106); ?>">Me connecter</a>
+                    </div>
+                <?php endif; ?>
+            </section>
+        </div>
 
         </body>
         <footer class="pageFooter actu">

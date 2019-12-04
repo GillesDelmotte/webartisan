@@ -137,6 +137,10 @@
 
 
 .single__actu{
+    .actu__content{
+        border-bottom: 2px solid $color__black;
+        padding-bottom: 50px;
+    }
     .actu{
         &__infos{
             margin: 20px 123px;

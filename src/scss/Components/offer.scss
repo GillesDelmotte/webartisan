@@ -162,6 +162,11 @@
         bottom: 0;
         left: 0;
     }
+
+    .comment__content{
+        font-family: $font__content;
+        line-height: 1.4;
+    }
 }
 
 .newOffer{
@@ -175,6 +180,8 @@
         color: $color__emplois;
         margin-bottom: 20px;
         text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+        text-transform: uppercase;
+        letter-spacing: 3px;
     }
     &__explanation{
         font-family: $font__content;
@@ -217,8 +224,6 @@
                 background-color: initial;
                 border-radius: 4px;
                 outline: none;
-
-
             }
             &__input input{
                 outline: none;

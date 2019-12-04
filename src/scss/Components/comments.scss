@@ -1,0 +1,22 @@
+.comments{
+    margin: 70px 123px;
+    position: relative;
+
+    &__title{
+        font-family: $font__title;
+        font-size: 40px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 30px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+}
+
+.comments.actu .comments__title{
+    color: $color__actu;
+}
+.comments.forum .comments__title{
+    color: $color__forum;
+}

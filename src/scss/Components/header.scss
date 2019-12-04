@@ -204,7 +204,8 @@ body{
 .pageHeader{
     filter: drop-shadow(-1px 6px 5px rgba(50, 50, 0, 0.3));
     &__clip{
-        height: 800px;
+        //height: 800px;
+        padding-bottom: 400px;
         clip-path: polygon(0 0, 100% 0, 100% 35%, 0% 100%);
         padding-top: 150px;
         //min-width: 1280px;
@@ -238,6 +239,11 @@ body{
             width: 50%;
             
         }
+        .pageHeader__tags{
+            display: flex;
+            flex-wrap: wrap;
+            margin:20px 123px;
+        }
     }
 }
 
@@ -258,6 +264,9 @@ body{
 }
 .pageHeader.snippets .pageHeader__clip{
     background-color: $color__snippet;
+}
+.pageHeader.mdn .pageHeader__clip{
+    background-color: $color__mdn;
 }
 
 @media(max-width: 1280px){

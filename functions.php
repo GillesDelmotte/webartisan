@@ -140,7 +140,7 @@ function post_newArticle()
 	}
 
 	$my_post = array(
-		'post_type' => 'post',
+		'post_type' => 'forum',
 		'post_title' => $_POST['title'],
 		'post_status' => 'publish',
 	);
@@ -167,3 +167,25 @@ function post_newArticle()
 
 add_action('admin_post_post_newArticle', 'post_newArticle');
 add_action('admin_post_nopriv_post_newArticle', 'post_newArticle');
+
+
+function post_newComment()
+{
+	if (!is_user_logged_in()) {
+		wp_redirect(home_url('/'));
+		exit;
+	}
+
+	$row = array(
+		'comment__author' => get_current_user_id(),
+		'comment' => $_POST['comment'],
+		'comment__date' => (new \DateTime())->format('m/d/Y')
+	);
+	add_row('comments', $row, $_POST['id']);
+
+	wp_redirect(get_permalink($_POST['id']));
+	exit;
+}
+
+add_action('admin_post_post_newComment', 'post_newComment');
+add_action('admin_post_nopriv_post_newComment', 'post_newComment');

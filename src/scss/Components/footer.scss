@@ -38,6 +38,9 @@
 .pageFooter.connexion .pageFooter__clip{
     background-color: $color__connexion;
 }
+.pageFooter.mdn .pageFooter__clip{
+    background-color: $color__mdn;
+}
 
 .footer__nav{
     font-family: $font__content;

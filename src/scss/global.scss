@@ -51,7 +51,6 @@
 }
 
 .other{
-   // margin: 0 48px 50px;
 
     &__title{
         margin: 0 123px;
@@ -62,10 +61,6 @@
         margin-bottom: 30px;
     }
     &__pics{
-        // display: grid;
-        // grid-template-columns: 1fr 1fr 1fr 1fr; 
-        // gap: 15px;
-        // width: 100%;
         img{
             width: 100%;
             height: auto;
@@ -91,7 +86,4 @@
         width: 100%;
     }
 }
-
-
-// form offer
 
