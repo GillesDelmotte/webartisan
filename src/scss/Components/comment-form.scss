@@ -100,3 +100,9 @@
         background-color: rgba($color: $color__forum, $alpha: 0.8);
     }
 }
+
+@media(max-width:720px){
+    .addComment{
+        margin: 70px 48px;
+    }
+}

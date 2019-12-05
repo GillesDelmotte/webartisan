@@ -5,6 +5,16 @@ body{
 .burger{
     position: relative;
     display: none;
+    .header__logo{
+        position: absolute;
+        top: 0; 
+        left: 47px;
+    }
+    .burger{
+        position: absolute;
+        top: 0; 
+        right: 47px;  
+    }
     &__nav{
         display: none;
         position: fixed;
@@ -121,7 +131,7 @@ body{
         img{
             width: 150px;
             position: relative;
-            z-index: 4;
+            //z-index: 4;
         }
     }
     &__connexion{
@@ -296,7 +306,7 @@ body{
         } 
         svg{
             position: relative;
-            z-index: 3;
+            //z-index: 3;
             width: 100%;
             line{
                stroke: white;
@@ -309,6 +319,33 @@ body{
             }
         }
     }
+}
 
+@media(max-width: 720px){
+    .pageHeader .pageHeader__title{
+        font-size: 40px;
+        margin: 0 48px;
+    }
+    .pageHeader .pageHeader__content{
+        margin: 0 48px;
+    }
+    .pageHeader .pageHeader__tags{
+        margin:20px 48px;
+    }
 
+    .header{
+        padding: 0 10px;
+    }
+
+    .burger{
+        .header__logo{
+          
+            left: 10px;
+        }
+        .burger{
+           
+            right: 10px;  
+        }
+    }
+    
 }

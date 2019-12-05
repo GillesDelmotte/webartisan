@@ -51,7 +51,7 @@ if (!is_user_logged_in()) {
                 <div class="offer__all">
                     <h2 class="offer__title"><?php the_title(); ?></h2>
                     <div class="offer__infos">
-                        <span class="offer__company"><?= get_the_author(); ?></span><span class="offer__date">Le <?= get_the_date(); ?></span><span class="offer__comments"><?= $number = count(get_field('comments')); ?> <?= $number > 1 ? 'commentaires' : 'commentaire'; ?></span>
+                        <span class="offer__company"><?= get_the_author(); ?></span><span class="offer__date">Le <?= get_the_date(); ?></span><span class="offer__comments"><?= $number = count(get_field('comments')); ?> <?= $number > 1 ? 'Réponses' : 'Réponse'; ?></span>
                     </div>
                     <ul class="offer__tags">
                         <?php $tags = get_the_tags(get_the_ID()); ?>

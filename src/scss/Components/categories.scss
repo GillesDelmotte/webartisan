@@ -1,0 +1,99 @@
+.mdn__nav{
+    margin: -350px 48px 40px;
+    position: relative; 
+    
+    background-color: white;
+    padding: 10px 30px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    //z-index: -1;
+    &__list{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        &__item{
+            margin: 10px 5px;
+            position: relative;
+                
+            a{
+                position: relative;
+                padding:7.5px;
+                font-family: $font__title;
+                text-decoration: none;
+                color: $color__mdn;
+                text-transform: uppercase;
+                font-size: 16px;
+                letter-spacing: 1.2px;
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+                //z-index: 1;
+                transition: 0.3s right color;
+                &::before{
+                    z-index: -1;
+                    content:'';
+                    position: absolute;
+                    left: 0; 
+                    top: 0;
+                    bottom: 0;
+                    right: 100%;
+                    background-color: black;
+                    transition: 0.3s right ;
+
+                }
+                &:hover{
+                    color: white;
+                    transition: 0.3s color;
+                    z-index: 1;
+                }
+                &:hover::before{
+                    right: 0;
+                    transition: 0.3s right;
+                }
+            }
+        }
+    }
+}
+.categories{
+    margin: 0 48px 150px; 
+    position: relative;
+
+    .category{
+        background-color: white;
+        padding: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        &__title{
+            margin-bottom: 30px;
+            font-family: $font__title;
+            font-size: 30px;
+            font-weight: bold;
+            display: inline-block;
+            color: $color__mdn;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        &__term{
+            margin: 0 48px 20px;
+            border-bottom: 1px solid $color__mdn;
+            padding-bottom: 20px;
+            overflow: hidden;
+            .term__title{
+                float: left;
+                width: 180px;
+                font-size: 20px;
+                font-family: $font__title;
+                margin-right: 20px;
+                word-wrap: break-word;
+            }
+            .term__desc{
+                margin-left: 200px;
+                font-family: $font__content;
+                line-height: 1.4;
+            }
+            &:last-of-type{
+                border: none;
+            }
+        }
+    }
+}

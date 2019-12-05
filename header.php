@@ -28,6 +28,17 @@
                 </svg>
             </label>
             <div class="burger__nav">
+            <a class="header__logo" href="<?= get_home_url(); ?>">
+                <?php $logo = get_field('logo__dark', 'options'); ?>
+                <?= wp_get_attachment_image($logo, "full"); ?>
+            </a>
+            <label for="burger" class="burger">
+                <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                    <line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="88" y1="21.5" x2="37" y2="21.5" />
+                    <line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="88" y1="45.5" x2="12" y2="45.5" />
+                    <line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="88" y1="67.5" x2="37" y2="67.5" />
+                </svg>
+            </label>
                 <?php wp_nav_menu(); ?>
                 <?php if (!is_user_logged_in()) : ?>
                     <a class="burger__connexion" href="<?= the_permalink(106); ?>">Connexion</a>

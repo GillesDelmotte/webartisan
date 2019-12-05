@@ -36,7 +36,7 @@ if (!is_user_logged_in()) {
 <div class="container">
     <section class="comments forum">
         <h2 class="comments__title">
-            Commentaires
+            Réponses
         </h2>
         <?php if (have_rows('comments')) : while (have_rows('comments')) : the_row(); ?>
                 <article class="offer">
@@ -59,7 +59,7 @@ if (!is_user_logged_in()) {
     </section>
     <section class="addComment forum">
         <h2 class="addComment__title">
-            Poster un commentaire
+            Répondre
         </h2>
         <form action="<?= admin_url('admin-post.php'); ?>" method="post">
             <input type="hidden" name="action" value="post_newComment">
@@ -70,7 +70,7 @@ if (!is_user_logged_in()) {
                     <textarea name="comment" id="comment" required <?= $disabled ? "disabled" : ""; ?>></textarea>
                 </div>
             </div>
-            <input type="submit" value="Poster le commentaire" class="form__submit" <?= $disabled ? "disabled" : ""; ?>>
+            <input type="submit" value="Poster la réponse" class="form__submit" <?= $disabled ? "disabled" : ""; ?>>
         </form>
         <?php if ($disabled) : ?>
             <div class="disabled">

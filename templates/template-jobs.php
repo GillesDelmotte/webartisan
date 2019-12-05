@@ -73,20 +73,23 @@ $jobs = new WP_Query(array('s' => $_GET['recherche'], 'post_type' => 'worker', '
         </div>
     </div>
     <section class="job__contact">
-        <div class="job__contact__img"><img src="<?= assets('./dist/icons/man-user.svg'); ?>" alt=""></div>
         <div class="job__contact__content">
             <h2 class="job__contact__title">Votre profil&nbsp;?</h2>
             <p class="job__contact__explaination">Vous avez un métiers qui n'est pas encore repris sur cette page ? vous êtes dans le domaine du web ? Contactez-nous pour qu'on puisse se rencontrer </p>
-            <form action="../functions/contactJob.php" method="POST">
-                <div class="job__contact__form__email">
-                    <label for="email">Votre email&nbsp;:</label>
-                    <input type="text" name="email" id="email">
+            <form action="" method="POST">
+                <div class="form__field email">
+                    <label for="email" class="form__field__label">Votre email*&nbsp;:</label>
+                    <div class="form__field__input">
+                        <input required type="text" id="email" name="email" placeholder="votre email ici">
+                    </div>
                 </div>
-                <div class="job__contact__form__message">
-                    <label for="message">Votre message&nbsp;:</label>
-                    <textarea name="message" id="message" cols="30" rows="5"></textarea>
+                <div class="form__field desc">
+                    <label for="message" class="form__field__label">Description&nbsp;:</label>
+                    <div class="form__field__input">
+                        <textarea name="message" id="message"></textarea>
+                    </div>
                 </div>
-                <input type="submit" value="Envoyer">
+                <input type="submit" value="Envoyer" class="form__submit">
             </form>
         </div>
     </section>

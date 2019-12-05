@@ -4,6 +4,7 @@
 require_once 'functions/cpt.php';
 require_once 'functions/thumb.php';
 require_once 'functions/paginate.php';
+require_once 'functions/taxo.php';
 
 
 function assets($path)
@@ -15,6 +16,9 @@ if (function_exists('acf_add_options_page')) {
 
 	acf_add_options_page();
 }
+
+
+register_nav_menu('main', 'menu principal');
 
 /* 
  * Customize Menu Item Classes

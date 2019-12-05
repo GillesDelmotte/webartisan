@@ -114,10 +114,12 @@
 .actu__thumbnail{
     position: relative;
     //z-index: 1;
-    margin: -440px 48px 0;
+    margin: -380px 48px 0;
     img{
         width: 100%;
         height: auto;
+        min-height: 300px;
+        object-fit: cover;
     }
 }
 
@@ -181,5 +183,12 @@
             display: flex;
             flex-wrap: wrap;
         }
+    }
+}
+
+@media(max-width: 720px){
+    .articles{
+        margin: -350px 10px 100px; 
+        display: block; 
     }
 }

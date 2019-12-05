@@ -20,3 +20,9 @@
 .comments.forum .comments__title{
     color: $color__forum;
 }
+
+@media(max-width:720px){
+    .comments{
+        margin: 70px 48px;
+    }
+}

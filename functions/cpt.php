@@ -52,9 +52,22 @@
             'description' => 'Tous les sujets',
             'public' => true,
             'menu_position' => 4,
-            'menu_icon' => 'dashicons-welcome-learn-more',
+            'menu_icon' => 'dashicons-admin-comments',
             'rewrite' => ['slug' => 'forum'],
             'taxonomies' => array('post_tag')
+        ]);
+
+        register_post_type('mdn', [
+            'label' => 'MDN',
+            'labels' => [
+                'singular-name' => 'MDN',
+                'add_new_item' => 'Ajouter un mot/concept'
+            ],
+            'description' => 'Tous les mots/concepts',
+            'public' => true,
+            'menu_position' => 5,
+            'menu_icon' => 'dashicons-admin-comments',
+            'rewrite' => ['slug' => 'mdn']
         ]);
     }
 

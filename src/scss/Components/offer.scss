@@ -54,9 +54,11 @@
         margin-bottom: 20px;
         font-family: $font__title;
         display: flex;
+        flex-wrap: wrap;
         color: $color__black;
         span{
             margin-right: 20px;
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
             a{
@@ -131,8 +133,8 @@
 
     &__type{
         position: absolute;
-        top: 30px;
-        right: 30px;
+        top: 10px;
+        right: 10px;
         &.emplois i::before{
             content: '';
             margin-right: 5px;
@@ -339,5 +341,22 @@
         .form__submit{
             padding: 15px 0;
         }
+    }
+}
+
+@media(max-width: 840px){
+    .offer{
+        padding: 20px;
+        &__img{
+            display: none;
+        }
+        &__all{
+            margin: 0 ;
+        }
+    }
+}
+@media(max-width: 720px){
+    .offers{
+        margin: -350px 10px 150px;
     }
 }
