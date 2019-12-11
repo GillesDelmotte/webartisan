@@ -30,15 +30,21 @@
                             <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
                         </div>
                     </div>
+                    <div class="form__field title">
+                        <label required for="tags" class="form__field__label">tags*&nbsp;:</label>
+                        <div class="form__field__input">
+                            <input type="text" id="tags" name="tags" value="<?= $_GET['tags']; ?>" placeholder="votre tag ici">
+                        </div>
+                    </div>
                     <button type="submit" class="form__submit">rechercher</button>
                 </form>
             </div>
         </div>
         <?php $currentPage = get_query_var('paged');
-        $actus = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'actualities', 'posts_per_page' => 4, 'paged' => $currentPage)); ?>
+        $actus = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'actualities', 'posts_per_page' => 4, 'paged' => $currentPage)); tags_filter($actus); ?>
         <?php while ($actus->have_posts()) : $actus->the_post(); ?>
             <article class="article">
-                <h2 class="article__title"><a href="<?= the_permalink(); ?>"><?= the_title(); ?></a></h2>
+                <h3 class="article__title"><a href="<?= the_permalink(); ?>"><?= the_title(); ?></a></h3>
                 <div class="article__infos">
                     <span class="article__date">Le <?= get_the_date(); ?></span><span class="article__author"><?= get_author_name(); ?></span>
                 </div>

@@ -2,6 +2,7 @@
 <?php
 $currentPage = get_query_var('paged');
 $jobs = new WP_Query(array('s' => $_GET['recherche'], 'post_type' => 'worker', 'posts_per_page' => 8, 'paged' => $currentPage));
+
 ?>
 
 <?php get_header(); ?>

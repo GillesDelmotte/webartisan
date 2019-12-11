@@ -15,8 +15,8 @@
         </div>
     </div>
 </div>
-
 </footer>
+<?php wp_footer(); ?>
 <script src="<?= assets('./dist/app.js'); ?>"></script>
 
 </html>

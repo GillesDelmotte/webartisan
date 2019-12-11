@@ -36,7 +36,7 @@
                              "resume resume"
                              "desc desc"
                              "button button";
-        margin-bottom: 100px;
+        margin-bottom: 20px;
         .form__field{
             &.type{
                 margin: 20px 0;
@@ -143,8 +143,25 @@
 
 }
 
+.form__explanation{
+    margin: 0 123px 50px;
+    font-family: $font__content;
+    p{
+        margin-bottom: 20px;
+    }
+    li{
+        margin-bottom: 10px;
+        span{
+            font-weight: 600;
+        }
+    } 
+}
+
 @media(max-width: 1000px){
     .newArticle{
+        margin: 0 48px;
+    }
+    .form__explanation{
         margin: 0 48px;
     }
 }
@@ -167,3 +184,4 @@
                              "button";
     }
 }
+

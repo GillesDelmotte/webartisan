@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="form__field">
-                        <label for="passwordINscription" class="form__field__label">Mot de passe&nbsp;:</label>
+                        <label for="passwordInscription" class="form__field__label">Mot de passe&nbsp;:</label>
                         <div class="form__field__input">
                             <input type="password" id="passwordInscription" name="password" placeholder="Entrez votre mot de passe ici">
                         </div>

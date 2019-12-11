@@ -101,6 +101,21 @@
     }
 }
 
+.addComment.tuto{
+    .addComment__title{
+        color: $color__snippet;
+    }
+    .form__submit{
+        background-color: $color__snippet;
+    }
+    .form__field__input textarea{
+        border-color: $color__snippet;
+    }
+    .disabled{
+        background-color: rgba($color: $color__snippet, $alpha: 0.8);
+    }
+}
+
 @media(max-width:720px){
     .addComment{
         margin: 70px 48px;

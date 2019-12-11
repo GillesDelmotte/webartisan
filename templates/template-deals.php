@@ -5,7 +5,13 @@ if (!is_user_logged_in()) {
 } else {
     $disabled = false;
 }
+
+$currentPage = get_query_var('paged');
+$offers = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'jobs', 'posts_per_page' => 6, 'paged' => $currentPage)); 
+tags_filter($offers);
+
 ?>
+
 <?php get_header(); ?>
 <div class="pageHeader deals">
     <div class="pageHeader__clip">
@@ -37,17 +43,22 @@ if (!is_user_logged_in()) {
                             <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
                         </div>
                     </div>
+                    <div class="form__field title">
+                        <label required for="tags" class="form__field__label">tags*&nbsp;:</label>
+                        <div class="form__field__input">
+                            <input type="text" id="tags" name="tags" value="<?= $_GET['tags']; ?>" placeholder="votre tag ici">
+                        </div>
+                    </div>
                     <button type="submit" class="form__submit">rechercher</button>
                 </form>
             </div>
         </div>
-        <?php $currentPage = get_query_var('paged');
-        $offers = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'jobs', 'posts_per_page' => 6, 'paged' => $currentPage)); ?>
+        
         <?php while ($offers->have_posts()) : $offers->the_post(); ?>
             <article class="offer">
                 <div class="offer__img"><?= get_avatar(get_the_author_id()); ?></div>
                 <div class="offer__all">
-                    <h2 class="offer__title"><?php the_title(); ?></h2>
+                    <h3 class="offer__title"><?php the_title(); ?></h3>
                     <div class="offer__infos">
                         <span class="offer__company"><?= get_field('offer__name') ?></span><span class="offer__location"><?= get_field('offer__location'); ?></span><span class="offer__date">Le <?= get_the_date(); ?></span>
                     </div>

@@ -1,43 +1,34 @@
-<?php
-if (!is_user_logged_in()) {
-    $disabled = true;
-} else {
-    $disabled = false;
-}
-?>
 <?php get_header(); ?>
 <?php the_post(); ?>
-<article class="single__forum">
-    <div class="pageHeader forum">
-        <div class="pageHeader__clip">
-            <div class="container">
-                <h1 class="pageHeader__title">
-                    <?= the_title(); ?>
-                </h1>
-                <p class="pageHeader__content">
-                    <?= get_field('forum__resume'); ?>
-                </p>
-                <ul class="pageHeader__tags">
-                    <?php $tags = get_the_tags(get_the_ID()); ?>
-                    <?php foreach ($tags as $tag) : ?>
-                        <li class="tag <?= $tag->slug; ?>">
-                            <?= $tag->name; ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
+<div class="pageHeader snippets">
+    <div class="pageHeader__clip">
+        <div class="container">
+            <h1 class="pageHeader__title">
+                <?= the_title(); ?>
+            </h1>
         </div>
     </div>
-    <div class="container">
-        <div class="forum__content wysiwyg">
-            <?php the_content(); ?>
-        </div>
-    </div>
-</article>
+</div>
 <div class="container">
-    <section class="comments forum">
+    <section class="tuto__content">
+        <?php if(get_field('tuto__video')): ?>
+            <div class="embed-container">
+                <?php the_field('tuto__video'); ?>
+            </div>
+            <div class="tuto__content__desc wysiwyg">
+            <?php the_content(); ?>
+            </div>
+        <?php else: ?>
+            <div class="tuto__content__desc--bgc wysiwyg">
+                <?= get_the_content(); ?>
+            </div>
+        <?php endif; ?>
+    </section>
+</div>
+<div class="container">
+    <section class="comments tuto">
         <h2 class="comments__title">
-            Réponses
+            Commentaires
         </h2>
         <?php $comments = get_comments('post_id='.get_the_ID()); ?>
         <?php foreach($comments as $comment): ?>
@@ -57,9 +48,9 @@ if (!is_user_logged_in()) {
                 </article>
         <?php endforeach; ?>
     </section>
-    <section class="addComment forum">
+    <section class="addComment tuto">
         <h2 class="addComment__title">
-            Poster une réponse
+            Poster un commentaire
         </h2>
         <form action="<?= admin_url('admin-post.php'); ?>" method="post">
             <input type="hidden" name="action" value="post_newComment">
@@ -80,6 +71,8 @@ if (!is_user_logged_in()) {
         <?php endif; ?>
     </section>
 </div>
-</body>
-<footer class="pageFooter forum">
-<?php get_footer(); ?>
+<footer class="pageFooter snippets">
+
+    <?php get_footer(); ?>
+
+    

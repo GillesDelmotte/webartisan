@@ -54,7 +54,10 @@
             'menu_position' => 4,
             'menu_icon' => 'dashicons-admin-comments',
             'rewrite' => ['slug' => 'forum'],
-            'taxonomies' => array('post_tag')
+            'taxonomies' => array('post_tag'),
+            'supports' => array(
+                'comments'
+            )
         ]);
 
         register_post_type('mdn', [
@@ -66,8 +69,22 @@
             'description' => 'Tous les mots/concepts',
             'public' => true,
             'menu_position' => 5,
-            'menu_icon' => 'dashicons-admin-comments',
+            'menu_icon' => 'dashicons-admin-post',
             'rewrite' => ['slug' => 'mdn']
+        ]);
+
+        register_post_type('tutos', [
+            'label' => 'Tutos',
+            'labels' => [
+                'singular-name' => 'Tuto',
+                'add_new_item' => 'Ajouter un tutoriel'
+            ],
+            'description' => 'Tous les tutoriels',
+            'public' => true,
+            'menu_position' => 6,
+            'menu_icon' => 'dashicons-admin-customizer',
+            'rewrite' => ['slug' => 'tutos'],
+            'taxonomies' => array('post_tag')
         ]);
     }
 

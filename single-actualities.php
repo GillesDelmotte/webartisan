@@ -35,7 +35,7 @@ if (!is_user_logged_in()) {
                     <?php endforeach; ?>
                 </ul>
                 <div class="actu__content wysiwyg">
-                    <?= get_field('actu__content'); ?>
+                    <?php the_content(); ?>
                 </div>
             </div>
         </article>
@@ -44,24 +44,23 @@ if (!is_user_logged_in()) {
                 <h2 class="comments__title">
                     Commentaires
                 </h2>
-                <?php if (have_rows('comments')) : while (have_rows('comments')) : the_row(); ?>
+                <?php $comments = get_comments('post_id='.get_the_ID()); ?>
+                <?php foreach($comments as $comment): ?>
                         <article class="offer">
-                            <div class="offer__img"><?= get_avatar(get_sub_field('comment__author')); ?></div>
+                            <div class="offer__img"><?= get_avatar($comment->comment_author_url); ?></div>
                             <div class="offer__all">
                                 <h2 class="offer__title">
-                                    <?php $user = get_user_by('id', get_sub_field('comment__author')); ?>
-                                    <?= $user->display_name; ?>
+                                    <?= $comment->comment_author; ?>
                                 </h2>
                                 <div class="offer__infos">
-                                    <span class="offer__date">Le <?= get_sub_field('comment__date'); ?></span>
+                                    <span class="offer__date">Le  <?= $comment->comment_date; ?></span>
                                 </div>
-                                <p class="comment__content">
-                                    <?= get_sub_field('comment'); ?>
+                                <p class="comment__content wysiwyg">
+                                    <?= $comment->comment_content; ?>
                                 </p>
                             </div>
                         </article>
-                <?php endwhile;
-                        endif; ?>
+                <?php endforeach; ?>
             </section>
             <section class="addComment actu">
                 <h2 class="addComment__title">

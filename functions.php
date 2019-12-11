@@ -5,6 +5,7 @@ require_once 'functions/cpt.php';
 require_once 'functions/thumb.php';
 require_once 'functions/paginate.php';
 require_once 'functions/taxo.php';
+require_once 'functions/filters.php';
 
 
 function assets($path)
@@ -146,6 +147,7 @@ function post_newArticle()
 	$my_post = array(
 		'post_type' => 'forum',
 		'post_title' => $_POST['title'],
+		'post_content' => $_POST['desc'],
 		'post_status' => 'publish',
 	);
 
@@ -163,7 +165,6 @@ function post_newArticle()
 	wp_set_post_tags($post_id, $array);
 
 	update_field("forum__resume", $_POST['resume'], $post_id);
-	update_field("forum__wysiwyg", $_POST['desc'], $post_id);
 
 	wp_redirect(home_url('/forum'));
 	exit;
@@ -180,16 +181,34 @@ function post_newComment()
 		exit;
 	}
 
-	$row = array(
-		'comment__author' => get_current_user_id(),
-		'comment' => $_POST['comment'],
-		'comment__date' => (new \DateTime())->format('m/d/Y')
+	$current_user = wp_get_current_user();
+
+	$comment = array(
+		'user_id' => get_current_user_id(),
+		'comment_post_ID' => $_POST['id'],
+		'comment_content' => $_POST['comment'],
+		'comment_author_url' => $current_user->user_email,
+		'comment_author' => $current_user->display_name
 	);
-	add_row('comments', $row, $_POST['id']);
+
+	wp_insert_comment( $comment );
+
+	// $row = array(
+	// 	'comment__author' => get_current_user_id(),
+	// 	'comment' => $_POST['comment'],
+	// 	'comment__date' => (new \DateTime())->format('m/d/Y')
+	// );
+	// add_row('comments', $row, $_POST['id']);
 
 	wp_redirect(get_permalink($_POST['id']));
 	exit;
-}
+};
 
 add_action('admin_post_post_newComment', 'post_newComment');
 add_action('admin_post_nopriv_post_newComment', 'post_newComment');
+
+function wa_show_admin_bar()
+{
+    return false;
+}
+add_filter( 'show_admin_bar' , 'wa_show_admin_bar' );

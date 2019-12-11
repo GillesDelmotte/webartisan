@@ -62,6 +62,7 @@
     }
 
     .form__field{
+        margin-bottom: 15px;
         &__input input{
             outline: none;
             width: 100%;
@@ -132,5 +133,26 @@
              background-color: $color__forum;   
             }
         }
+    }
+    &.snippets{
+        .filter__window{
+            &__title{
+                color: $color__snippet;
+            }
+            input{
+                border-color: $color__snippet;
+            }
+            .form__submit{
+             background-color: $color__snippet;   
+            }
+        }
+    }
+}
+
+@media(max-width: 635px){
+    .filter__window{
+        left: 10px;
+        right: 10px;
+        width: initial;
     }
 }

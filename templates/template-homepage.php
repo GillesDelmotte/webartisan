@@ -45,6 +45,30 @@
             <a href="<?= the_permalink(12); ?>" class="highlighted__link">Voir tous les articles</a>
         </section>
     </div>
+    <div class="container">
+        <section class="other other__homepage">
+            <h2 class="other__title">Découvrez les métiers du web</h2>
+            <div class="other__pics">
+                <?php $args = new WP_Query(array('post_type' => 'worker', 'posts_per_page' => 4, 'orderby' => 'rand')); ?>
+                <ul class="persons">
+                    <?php while ($args->have_posts()) : $args->the_post(); ?>
+                        <li class="person">
+                            <a href="<?= the_permalink(); ?>" class="person__link"><span class="sr-only">interview de <?= get_field('job__name'); ?> (<?= the_title(); ?>)</span></a>
+                            <?php $img = get_field('job__img');
+                                        $size = 'thumb_285x350' ?>
+                            <?= wp_get_attachment_image($img, $size); ?>
+                            <div class="person__infos">
+                                <span class="person__name"><?= get_field('job__name'); ?></span>
+                                <span class="person__job"><?= the_title(); ?></span>
+                            </div>
+                        </li>
+                    <?php endwhile; ?>
+                    <?php wp_reset_query(); ?>
+                </ul>
+                <a href="<?= the_permalink(19); ?>" class="highlighted__link">Voir tous les métiers</a>
+            </div>
+        </section>
+    </div>
 </div>
 
 </body>

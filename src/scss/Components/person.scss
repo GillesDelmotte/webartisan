@@ -65,6 +65,7 @@
 .person{
     position: relative;
     width: 100%;
+    max-width: 350px;
     &__infos{
         position: absolute;
         bottom: 0px;

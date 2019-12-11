@@ -49,9 +49,9 @@ if (!is_user_logged_in()) {
             <article class="offer">
                 <div class="offer__img"><?= get_avatar(get_the_author_id()); ?></div>
                 <div class="offer__all">
-                    <h2 class="offer__title"><?php the_title(); ?></h2>
+                    <h3 class="offer__title"><?php the_title(); ?></h3>
                     <div class="offer__infos">
-                        <span class="offer__company"><?= get_the_author(); ?></span><span class="offer__date">Le <?= get_the_date(); ?></span><span class="offer__comments"><?= $number = count(get_field('comments')); ?> <?= $number > 1 ? 'Réponses' : 'Réponse'; ?></span>
+                        <span class="offer__company"><?= get_the_author(); ?></span><span class="offer__date">Le <?= get_the_date(); ?></span><span class="offer__comments"><?= $number = get_comments_number(get_the_ID()) ?> <?= $number > 1 ? 'Réponses' : 'Réponse'; ?></span>
                     </div>
                     <ul class="offer__tags">
                         <?php $tags = get_the_tags(get_the_ID()); ?>
@@ -121,6 +121,23 @@ if (!is_user_logged_in()) {
             </div>
         <?php endif; ?>
     </section>
+    <div class="container">
+        <div class="form__explanation">
+                <p>
+                    Pour ajouter une coloration syntaxique, copier coller les raccourcis suivants :
+                </p>
+                <ul>
+                    <li>Code : <span>[code]…[/code]</span></li>
+                    <li>HTML : <span>[code=html]…[/code]</span></li>
+                    <li>CSS : <span>[code=css]…[/code]</span></li>
+                    <li>PHP : <span>[code=php]…[/code]</span></li>
+                    <li>JAVASCRIPT : <span>[code=javascript]…[/code]</span></li>
+                    <li>MySQL : <span>[code=sql]…[/code]</span></li>
+                </ul>
+        </div>
+    </div>
+    
+
 </div>
 </body>
 <footer class="pageFooter forum">

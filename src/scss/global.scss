@@ -1,5 +1,6 @@
 html{
     scroll-behavior: smooth;
+    min-height: 100vh;
 }
 
 .single__job{
@@ -53,14 +54,29 @@ html{
 }
 
 .other{
+    &.other__homepage{
+        .other__title{
+            text-align: right;
+            margin: 0 48px 30px;
+            color: $color__home;
+            text-transform: uppercase;
 
+        }
+        .persons{
+            margin-bottom: 0px;
+        }
+        .highlighted__link{
+                margin: 48px;
+                //text-align: right;
+        }
+    }
+    
     &__title{
-        margin: 0 123px;
+        margin: 0 123px 30px;
         font-family: $font__title;
         font-size: 50px;
         color: $color__job;
         text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-        margin-bottom: 30px;
     }
     &__pics{
         img{
@@ -89,3 +105,8 @@ html{
     }
 }
 
+.syntaxhighlighter.nogutter{
+    width: 100% !important;
+    padding: 20px 48px !important;
+    box-sizing: border-box !important;
+}

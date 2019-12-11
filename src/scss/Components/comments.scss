@@ -17,8 +17,13 @@
 .comments.actu .comments__title{
     color: $color__actu;
 }
+
 .comments.forum .comments__title{
     color: $color__forum;
+}
+
+.comments.tuto .comments__title{
+    color: $color__snippet;
 }
 
 @media(max-width:720px){
