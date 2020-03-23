@@ -24,24 +24,14 @@
 
     &__title {
         a{
-            color: $color__blue;
+            color: $color__actu;
             text-decoration: none;
-            &::after{
-                content: '';
-                display: block;
-                height: 2px;
-                background-color: $color__blue;
-                width: 0%;
-                margin-top: 3px;
+            &:hover{
                 transition: 0.2s all;
-                border-radius: 1px;
-            }
-            &:hover::after{
-                width: 100%;
-                transition: 0.2s all;
+                opacity: 0.6;
             }
         }
-        margin: 0 75px 10px;
+        margin: 0 75px 20px;
         font-family: $font__title;
         font-size: 25px;
         display: inline-block;

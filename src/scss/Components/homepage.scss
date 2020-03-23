@@ -122,3 +122,20 @@
     }
 }
 
+.forum{
+    &__homepage{
+    margin: 30px 48px 100px;
+    
+    }   
+    &__title{
+        font-family: $font__title;
+        font-size: 50px;
+        font-weight: bold;
+        color: $color__home;
+        filter: drop-shadow(none);
+        margin-bottom: 30px;
+        
+        text-align: right;
+        text-transform: uppercase;
+    }
+}

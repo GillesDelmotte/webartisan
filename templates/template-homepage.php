@@ -46,6 +46,41 @@
         </section>
     </div>
     <div class="container">
+        <section class="forum forum__homepage">
+            <h2 class="forum__title">Découvrez notre forum</h2>
+            <div class="forum__list">
+                <?php $args = new WP_Query(array('post_type' => 'forum', 'posts_per_page' => 2, 'orderby' => 'rand')); ?>
+                    <?php while ($args->have_posts()) : $args->the_post(); ?>
+                        <article class="offer">
+                            <div class="offer__img"><?= get_avatar(get_the_author_id()); ?></div>
+                            <div class="offer__all">
+                                <h3 class="offer__title"><?php the_title(); ?></h3>
+                                <div class="offer__infos">
+                                    <span class="offer__company"><?= get_the_author(); ?></span><span class="offer__date">Le <?= get_the_date(); ?></span><span class="offer__comments"><?= $number = get_comments_number(get_the_ID()) ?> <?= $number > 1 ? 'Réponses' : 'Réponse'; ?></span>
+                                </div>
+                                <ul class="offer__tags">
+                                    <?php $tags = get_the_tags(get_the_ID()); ?>
+                                    <?php foreach ($tags as $tag) : ?>
+                                        <li class="tag <?= $tag->slug; ?>">
+                                            <?= $tag->name; ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <div class=" offer__content wysiwyg">
+                                    <p>
+                                        <?= get_field('forum__resume') ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="<?= the_permalink(); ?>" class="offer__link"></a>
+                        </article>
+                    <?php endwhile; ?>
+                <?php wp_reset_query(); ?>
+            </div>
+            <a href="<?= the_permalink(17); ?>" class="highlighted__link">Voir tous les sujets</a>
+        </section>
+    </div>
+    <div class="container">
         <section class="other other__homepage">
             <h2 class="other__title">Découvrez les métiers du web</h2>
             <div class="other__pics">
@@ -67,6 +102,42 @@
                 </ul>
                 <a href="<?= the_permalink(19); ?>" class="highlighted__link">Voir tous les métiers</a>
             </div>
+        </section>
+    </div>
+    
+    <div class="container">
+        <section class="forum forum__homepage">
+            <h2 class="forum__title">Découvrez nos tutoriels</h2>
+            <div class="forum__list">
+                <?php $args = new WP_Query(array('post_type' => 'tutos', 'posts_per_page' => 2, 'orderby' => 'rand')); ?>
+                    <?php while ($args->have_posts()) : $args->the_post(); ?>
+                        <article class="offer">
+                            <div class="offer__img"><?= get_avatar(get_the_author_id()); ?></div>
+                            <div class="offer__all">
+                                <h3 class="offer__title"><?php the_title(); ?></h3>
+                                <div class="offer__infos">
+                                    <span class="offer__company"><?= get_the_author(); ?></span><span class="offer__date">Le <?= get_the_date(); ?></span><span class="offer__comments"><?= $number = get_comments_number(get_the_ID()) ?> <?= $number > 1 ? 'Réponses' : 'Réponse'; ?></span>
+                                </div>
+                                <ul class="offer__tags">
+                                    <?php $tags = get_the_tags(get_the_ID()); ?>
+                                    <?php foreach ($tags as $tag) : ?>
+                                        <li class="tag <?= $tag->slug; ?>">
+                                            <?= $tag->name; ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <div class=" offer__content wysiwyg">
+                                    <p>
+                                        <?= get_field('forum__resume') ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="<?= the_permalink(); ?>" class="offer__link"></a>
+                        </article>
+                    <?php endwhile; ?>
+                <?php wp_reset_query(); ?>
+            </div>
+            <a href="<?= the_permalink(21); ?>" class="highlighted__link">Voir tous les tutos</a>
         </section>
     </div>
 </div>

@@ -55,9 +55,9 @@
             'menu_icon' => 'dashicons-admin-comments',
             'rewrite' => ['slug' => 'forum'],
             'taxonomies' => array('post_tag'),
-            'supports' => array(
-                'comments'
-            )
+            // 'support' => array(
+            //     'comments'
+            // )
         ]);
 
         register_post_type('mdn', [
@@ -90,5 +90,3 @@
 
     add_action('init', 'webartisan_register_custom_post_type');
 
-
-?>

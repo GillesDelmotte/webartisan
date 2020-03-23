@@ -74,6 +74,87 @@ add_action('admin_post_post_login', 'post_login');
 add_action('admin_post_nopriv_post_login', 'post_login');
 
 
+function post_register()
+{
+	global $reg_errors;
+	$reg_errors = new WP_Error;
+	
+	$username=$_POST['name'];
+    $useremail=$_POST['email'];
+	$password=$_POST['password'];
+	$confirmPassword = $_POST['passwordConfirm'];
+
+	if(empty( $username ) || empty( $useremail ) || empty($password) || empty( $confirmPassword ))
+    {
+        $reg_errors->add('field', 'Certains champs requis sont manquant');
+	} 
+	
+	if ( 6 > strlen( $username ) )
+    {
+        $reg_errors->add('username_length', 'Nom d‘utilisateur trop court. 6 caractère sont requis' );
+	}
+	
+	if ( username_exists( $username ) )
+    {
+        $reg_errors->add('user_name', 'Ce nom d‘utilisateur est déjâ pris ');
+	}
+	
+	if ( !is_email( $useremail ) )
+    {
+        $reg_errors->add( 'email_invalid', 'Email invalide' );
+	}
+	
+	if ( email_exists( $useremail ) )
+    {
+        $reg_errors->add( 'email', 'Cet email existe déjâ' );
+	}
+	
+	if( $password != $confirmPassword){
+		$reg_errors->add( 'confirmPassword', 'Votre mot de passe et la confirmation sont différents' );
+	}
+
+	if ( 1 > count( $reg_errors->get_error_messages() ) ){
+		global $username, $useremail;
+        $username   =   sanitize_user( $_POST['name'] );
+        $useremail  =   sanitize_email( $_POST['email'] );
+        $password   =   esc_attr( $_POST['password'] );
+        
+        $userdata = array(
+			'user_login'    =>   $username,
+			'user_email'    =>   $useremail,
+			'user_nicename' => $username,
+			'display_name' => $username,
+			'nickname' => $username,
+			'user_nicename' => $username,
+			'user_pass' => $password,
+			'role' => 'subscriber'
+            );
+		$user = wp_insert_user( $userdata );
+
+
+		$info = array();
+		$info['user_login'] = $username;
+		$info['user_password'] = $password;
+		$info['remember'] = true;
+
+		$user_signon = wp_signon($info, false);
+		
+		wp_redirect(home_url());
+		exit;
+
+	}else{
+		wp_redirect(home_url('/connexion-inscription'));
+		exit;
+	}
+
+	
+	
+}
+
+add_action('admin_post_post_register', 'post_register');
+add_action('admin_post_nopriv_post_register', 'post_register');
+
+
 function post_newOffer()
 {
 

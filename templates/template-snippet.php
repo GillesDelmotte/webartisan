@@ -78,6 +78,14 @@ $tutos = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'tutos', 'post
         )); ?>
     </div>
 </div>
+<div class="container">
+    <div class="redirection snippet">
+        <p class="redirection__para">Vous ne trouvez pas de tutos pour votre problème ? N'hésitez pas a demander sur notre forum</p>
+        <div class="redirction__link">
+            <a href="<?php the_permalink(17); ?>">Aller sur la page forum</a>
+        </div>
+    </div>
+</div>
 </body>
 <footer class="pageFooter snippets">
 

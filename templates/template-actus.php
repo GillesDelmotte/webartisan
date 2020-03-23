@@ -78,6 +78,14 @@
         )); ?>
     </div>
 </div>
+<div class="container">
+    <div class="redirection actu">
+        <p class="redirection__para">Vous chercher un emplois ou un stage ? Consultez notre page avec toutes les offres des agences</p>
+        <div class="redirction__link">
+            <a href="<?php the_permalink(14); ?>">Aller sur la page emplois</a>
+        </div>
+    </div>
+</div>
 </body>
 <footer class="pageFooter actu">
 

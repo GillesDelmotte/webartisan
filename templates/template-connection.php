@@ -46,7 +46,8 @@
             </div>
             <div>
                 <h1 class="forms__title">Inscription</h1>
-                <form action="" method="POST">
+                <form action="<?= admin_url('admin-post.php'); ?>" method="POST">
+                    <input type="hidden" name="action" value="post_register">
                     <div class="form__field">
                         <label for="emailInscription" class="form__field__label">Email&nbsp;:</label>
                         <div class="form__field__input">
