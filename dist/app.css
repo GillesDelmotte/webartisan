@@ -154,11 +154,11 @@ body {
 
 .header__search {
   position: relative;
-  margin: 20px 10px 0;
+  margin: 25px 10px 0;
 }
 
 .search__icon {
-  width: 30px;
+  width: 20px;
   cursor: pointer;
 }
 
@@ -329,11 +329,13 @@ body {
 }
 .header__connexion {
   margin-left: 50px;
+  font-size: 14px;
   color: #F8F8F8;
   text-decoration: none;
-  margin-top: 20px;
+  margin-top: 21px;
   position: relative;
   padding: 7.5px;
+  letter-spacing: 1.2px;
 }
 .header__connexion::before {
   z-index: -1;
@@ -360,7 +362,7 @@ body {
 }
 .header__nav .menu-item {
   position: relative;
-  padding: 7.5px;
+  padding: 7.5px 15px;
 }
 .header__nav .menu-item.current_page_item {
   background-color: black;
@@ -371,7 +373,7 @@ body {
 .header__nav .menu-item a {
   color: #F8F8F8;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 1.2px;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
 }

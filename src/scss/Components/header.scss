@@ -28,11 +28,11 @@ body{
 }
 .header__search{
     position: relative;
-    margin: 20px 10px 0;
+    margin: 25px 10px 0;
 
 }
 .search__icon{
-    width: 30px;
+    width: 20px;
     cursor: pointer;
 
     
@@ -193,12 +193,13 @@ body{
     }
     &__connexion{
         margin-left: 50px;
+        font-size: 14px;
         color : $color__white;
-        //margin-top: 7.5px;
         text-decoration: none;
-        margin-top: 20px;
+        margin-top: 21px;
         position: relative;
         padding:7.5px;
+        letter-spacing: 1.2px;
         &::before{
             z-index: -1;
             content:'';
@@ -227,7 +228,7 @@ body{
             display: flex;
             &-item{
                 position: relative;
-                padding:7.5px;
+                padding: 7.5px 15px;
                 
                 &.current_page_item{
                     background-color: black;
@@ -239,7 +240,7 @@ body{
                 a{ 
                     color: $color__white;
                     text-decoration: none;
-                    font-size: 16px;
+                    font-size: 14px;
                     letter-spacing: 1.2px;
                     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
                     &::before{
