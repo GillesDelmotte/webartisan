@@ -101,3 +101,20 @@ html, body {
         }
     }
 }
+
+
+@media( max-width: 1040px){
+    .forms{
+        display: block;
+        & > div{
+            margin-bottom: 50px;
+        }
+    }
+}
+
+@media( max-width: 650px){
+    .forms{
+        padding: 20px;
+        margin-bottom: 50px;
+    }
+}

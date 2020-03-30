@@ -58,6 +58,7 @@ html{
         .other__title{
             text-align: right;
             margin: 0 48px 30px;
+            line-height: 1.3;
             color: $color__home;
             text-transform: uppercase;
 
@@ -109,4 +110,17 @@ html{
     width: 100% !important;
     padding: 20px 48px !important;
     box-sizing: border-box !important;
+}
+
+
+@media( max-width: 460px){
+    .other.other__homepage .other__title{
+        margin: 0 10px 30px;
+    }
+
+    .persons{
+        margin: 0 10px 100px;
+    }
+    
+    
 }

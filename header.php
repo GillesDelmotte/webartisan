@@ -63,11 +63,14 @@
                 </label>
                 <input type="checkbox" name="search__button" id="search__button" class="sr-only search__input">
                 <form id="searchform" method="get" action="<?= home_url('/'); ?>">
-                    <label class="search__label" for="search">
-                        <span class="sr-only">Rechercher</span>
-                    </label>
-                    <input type="search" class="search-field" name="s" id="s" placeholder="Rechercher" value="<?php the_search_query(); ?>">
-                    <button type="submit" class="sr-only">Rechercher</button>
+                    <h3>Rechercher</h3>
+                    <div class="form__field title">
+                        <label required for="tags" class="form__field__label sr-only">rechercher*&nbsp;:</label>
+                        <div class="form__field__input">
+                            <input type="search" class="search-field" name="s" id="s" value="<?php the_search_query(); ?>">
+                        </div>
+                    </div>
+                    <button type="submit" class="form__submit">rechercher</button>
                 </form>
             </div>
             <?php if (!is_user_logged_in()) : ?>

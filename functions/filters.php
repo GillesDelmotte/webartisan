@@ -2,7 +2,7 @@
 
 function tags_filter($query){
 
-    if(isset($_GET['tags'])){
+    if( 'nav_menu_item' !== $query->get('post_type') && !empty($_GET['tags']) ){
         $query->set('tax_query', array(
             array(
                 'taxonomy' => 'post_tag',
@@ -10,6 +10,8 @@ function tags_filter($query){
                 'terms' => $_GET['tags']
             )
         ));
+        return $query;
+
     }
     return $query;
 }

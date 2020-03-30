@@ -97,3 +97,35 @@
         }
     }
 }
+
+@media( max-width: 850px){
+    .categories{
+        .category__term{
+            margin: 0 0 20px;
+        }
+    }
+}
+
+@media( max-width: 700px){
+    .categories{
+        .category__term{
+            .term__title{
+                float: initial;
+                margin-bottom: 20px;
+            }
+            .term__desc{
+                margin-left: 0;
+                
+            }
+        }
+    }
+}
+
+@media( max-width: 460px){
+    .mdn__nav{
+        margin: -350px 10px 40px;
+    }
+    .categories{
+        margin: 0 10px 150px; 
+    }
+}

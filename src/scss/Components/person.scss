@@ -186,3 +186,15 @@
         margin: 0 48px 100px;
     }
 }
+
+@media(max-width: 610px){
+    .persons{
+        display: block;
+        .person{
+            width: 100%;
+            max-width: initial;
+            margin-bottom: 20px;
+        }
+
+    }
+}
