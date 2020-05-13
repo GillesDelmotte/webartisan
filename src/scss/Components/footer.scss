@@ -69,6 +69,7 @@
                 text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
                 display: inline;
                 padding:7.5px;
+                outline:none;
                 &::before{
                     z-index: -1;
                     content:'';
@@ -82,7 +83,7 @@
 
                     
                 }
-                &:hover::before{
+                &:hover::before, &:focus::before{
                     right: 0;
                     transition: 0.3s right;
                 }
@@ -140,6 +141,10 @@
         margin-left: 15px;
         outline: none;
         transition: 0.2s background-color;
+        background-image: url('#{$icons}correct.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 50%;
         &:hover{
             background-color: $color__job;
             transition: 0.2s background-color;

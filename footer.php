@@ -8,8 +8,8 @@
             <p class="footer__newsletter__content">Pour recevoir toutes les informations par e-mail n’hésiter pas vous abonnez à notre newsletter</p>
             <form action="<?= admin_url('admin-post.php'); ?>" method="POST" class="footer__newsletter__form">
                 <input type="hidden" name="action" value="post_newsletter">
-                <input type="email" name="email" class="footer__newsletter__form__input"><button class="footer__newsletter__form__button"><span class="sr-only">Rechercher</span>
-
+                <input type="email" name="email" placeholder="Jean.charles@gmail.com" class="footer__newsletter__form__input">
+                <button class="footer__newsletter__form__button"><span class="sr-only">Rechercher</span>
                 </button>
             </form>
         </div>
