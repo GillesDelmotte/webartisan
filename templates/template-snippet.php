@@ -29,15 +29,21 @@ $tutos = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'tutos', 'post
                 <h3 class="filter__window__title">Filtre</h3>
                 <form action="">
                     <div class="form__field title">
-                        <label required for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
+                        <label for="title" class="form__field__label">Titre de l'annonce&nbsp;:</label>
                         <div class="form__field__input">
                             <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
                         </div>
                     </div>
                     <div class="form__field title">
-                        <label required for="tags" class="form__field__label">tags*&nbsp;:</label>
+                        <label for="tags" class="form__field__label">tags&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="text" id="tags" name="tags" value="<?= $_GET['tags']; ?>" placeholder="votre tag ici">
+                            <!-- <input type="text" id="tags" name="tags" value="<?= $_GET['tags']; ?>" placeholder="votre tag ici"> -->
+                            <select class="custom-select" id="tags" name="tags">
+                                <option value="">Choisissez un tag</option>
+                                <?php foreach(get_tags() as $tag): ?>
+                                <option value="<?= $tag->name; ?>"><?= $tag->name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
                     <button type="submit" class="form__submit">rechercher</button>
@@ -45,7 +51,7 @@ $tutos = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'tutos', 'post
             </div>
         </div>
 
-        <?php while ($tutos->have_posts()) : $tutos->the_post(); ?>
+        <?php if ($tutos->have_posts()) : while ($tutos->have_posts()) : $tutos->the_post(); ?>
             <article class="offer">
                 <div class="offer__all">
                     <h3 class="offer__title"><?php the_title(); ?></h3>
@@ -64,7 +70,15 @@ $tutos = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'tutos', 'post
                 <a href="<?php the_permalink(); ?>" class="offer__link"></a>
             </article>
         
-    <?php endwhile; ?>
+    <?php endwhile; elseif(!empty($_GET['title'])): ?>
+    <div class="noSearch">
+            <p>Il n'y a aucun résultat pour cette recherche  : "<?= $_GET['title']; ?>"</p>
+        </div>
+        <?php else: ?> 
+          <div class="noSearch">
+            <p>Il n'y a aucun post sur le forum</p>
+        </div>     
+        <?php endif; ?>
     <?php wp_reset_query(); ?>
     </section>
 </div>

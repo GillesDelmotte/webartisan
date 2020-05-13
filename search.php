@@ -3,7 +3,7 @@
 global $wp_query;
 $s = get_search_query();
 $args = array(
-    'post_type' => array('actualities', 'forum', 'tutos'),
+    'post_type' => array('actualities', 'forum', 'tutos', 'jobs', 'worker', 'mdn'),
     's' => $s,
     'orderby' => 'post_type',
     'order' => 'ASC',
@@ -26,10 +26,20 @@ get_header();
     <h2 class="sr-only">
         Le resultat de votre recherche
     </h2>
+    <div class="noSearch">
+    <p>Votre recherche est :"<?= $_GET['s']; ?>"</p>
+</div> 
 <?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); ?>
+ 
 <article class="offer">
     <div class="offer__all">
-        <h2 class="offer__title"><?php the_title(); ?></h2>
+        <h2 class="offer__title">
+            <?php if(get_post_type() === 'worker'){
+                echo get_field('job__name') . ' : ';
+                } ;
+            ?>
+            <?php the_title(); ?>
+        </h2>
         <div class="offer__infos">
             <span class="offer__date">Le <?= get_the_date(); ?></span><span class="post__type"><?= get_post_type(); ?></span>
         </div>

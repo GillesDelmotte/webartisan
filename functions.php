@@ -52,6 +52,7 @@ add_filter('nav_menu_css_class', 'be_menu_item_classes', 10, 3);
 
 function post_login()
 {
+	$errors = 'il y a des erreurs';
 
 	$info = array();
 	$info['user_login'] = $_POST['name'];
@@ -163,6 +164,12 @@ function post_newOffer()
 		exit;
 	}
 
+	if(empty($_POST['title']) || empty($_POST['name']) || empty($_POST['tags']) || empty($_POST['type']) || empty($_POST['city']) || empty($_POST['tel']) || empty($_POST['email'])){
+		wp_redirect(home_url('/offres-demplois-stage'));
+		exit;
+	}
+
+	
 	$my_post = array(
 		'post_type' => 'jobs',
 		'post_title' => $_POST['title'],
@@ -225,6 +232,11 @@ function post_newArticle()
 		exit;
 	}
 
+	if(empty($_POST['title']) || empty($_POST['desc']) || empty($_POST['tags']) || empty($_POST['resume'])){
+		wp_redirect(home_url('/forum'));
+		exit;
+	}
+
 	$my_post = array(
 		'post_type' => 'forum',
 		'post_title' => $_POST['title'],
@@ -259,6 +271,11 @@ function post_newComment()
 {
 	if (!is_user_logged_in()) {
 		wp_redirect(home_url('/'));
+		exit;
+	}
+
+	if(empty($_POST['comment'])){
+		wp_redirect(get_permalink($_POST['id']));
 		exit;
 	}
 

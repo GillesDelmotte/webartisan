@@ -31,6 +31,7 @@
             Commentaires
         </h2>
         <?php $comments = get_comments('post_id='.get_the_ID()); ?>
+        <?php if(!empty($comments) ):  ?>
         <?php foreach($comments as $comment): ?>
                 <article class="offer">
                     <div class="offer__img"><?= get_avatar($comment->comment_author_url); ?></div>
@@ -47,6 +48,11 @@
                     </div>
                 </article>
         <?php endforeach; ?>
+        <?php else: ?>
+            <div class="noSearch">
+            <p>il n'y a pas de commentaire</p>
+        </div> 
+        <?php endif; ?>
     </section>
     <section class="addComment tuto">
         <h2 class="addComment__title">

@@ -28,13 +28,13 @@
                     <div class="form__field">
                         <label for="nameConnection" class="form__field__label">Email&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="text" id="nameConnection" name="name" placeholder="Entrez votre nom d‘utilisateur ou votre email ici">
+                            <input type="text" id="nameConnection" name="name" placeholder="Jean Charles">
                         </div>
                     </div>
                     <div class="form__field">
                         <label for="passwordConnection" class="form__field__label">Mot de passe&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="password" id="passwordConnection" name="password" placeholder="Entrez votre mot de passe ici">
+                            <input type="password" id="passwordConnection" name="password" placeholder="Minimum 8 caractères">
                         </div>
                     </div>
                     <div class="form__action">
@@ -51,25 +51,25 @@
                     <div class="form__field">
                         <label for="emailInscription" class="form__field__label">Email&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="text" id="emailInscription" name="email" placeholder="Entrez votre email ici">
+                            <input type="text" id="emailInscription" name="email" placeholder="jean.charles@gmail.com">
                         </div>
                     </div>
                     <div class="form__field">
                         <label for="nameInscription" class="form__field__label">Nom d'utilisateur&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="text" id="nameInscription" name="name" placeholder="Entrez votre nom d‘utilisateur ici">
+                            <input type="text" id="nameInscription" name="name" placeholder="Jean Charles">
                         </div>
                     </div>
                     <div class="form__field">
                         <label for="passwordInscription" class="form__field__label">Mot de passe&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="password" id="passwordInscription" name="password" placeholder="Entrez votre mot de passe ici">
+                            <input type="password" id="passwordInscription" name="password" placeholder="Minimum 8 caractères">
                         </div>
                     </div>
                     <div class="form__field">
                         <label for="passwordConfirm" class="form__field__label">Confirmation du mot de passe&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmez votre mot de passe ici">
+                            <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Minimum 8 caractères">
                         </div>
                     </div>
                     <div class="form__action">

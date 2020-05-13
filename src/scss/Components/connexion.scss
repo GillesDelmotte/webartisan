@@ -72,6 +72,7 @@ html, body {
         box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
         border-radius: 3px;
         transition: 0.2s background-color,color;
+        border: none;
         &:hover{
             background-color: $color__connexion;
             color: $color__white;

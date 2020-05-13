@@ -38,15 +38,22 @@ tags_filter($offers);
                 <h3 class="filter__window__title">Filtre</h3>
                 <form action="">
                     <div class="form__field title">
-                        <label required for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
+                        <label for="title" class="form__field__label">Titre de l'annonce&nbsp;:</label>
                         <div class="form__field__input">
                             <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
                         </div>
                     </div>
                     <div class="form__field title">
-                        <label required for="tags" class="form__field__label">tags*&nbsp;:</label>
+                        <label for="tags" class="form__field__label">tags&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="text" id="tags" name="tags" value="<?= $_GET['tags']; ?>" placeholder="votre tag ici">
+                            <!-- <input type="text" id="tags" name="tags" value="<?= $_GET['tags']; ?>" placeholder="votre tag ici"> -->
+                            <select class="custom-select" id="tags" name="tags">
+                                <option value="">Choisissez un tag</option>
+                                <option value="" disabled>-----------------------------------------</option>
+                                <?php foreach(get_tags() as $tag): ?>
+                                <option value="<?= $tag->name; ?>"><?= $tag->name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
                     <button type="submit" class="form__submit">rechercher</button>
@@ -54,7 +61,7 @@ tags_filter($offers);
             </div>
         </div>
         
-        <?php while ($offers->have_posts()) : $offers->the_post(); ?>
+        <?php  if ($offers->have_posts()) : while ($offers->have_posts()) : $offers->the_post(); ?>
             <article class="offer">
                 <div class="offer__img"><?= get_avatar(get_the_author_id()); ?></div>
                 <div class="offer__all">
@@ -74,7 +81,8 @@ tags_filter($offers);
                         <?= get_field('offer__content'); ?>
                     </div>
                     <div class="offer__infos">
-                        <span class="offer__email"><a href="mailto:<?= get_field('offer__email') ?>"><?= get_field('offer__email') ?></a></span><span class="offer__phone"><?= get_field('offer__phone'); ?>
+                        <span class="offer__email"><a href="mailto:<?= get_field('offer__email') ?>"><?= get_field('offer__email') ?></a></span>
+                        <span class="offer__phone"><a href="tel:<?= get_field('offer__phone'); ?>"><?= get_field('offer__phone'); ?></a></span>
                     </div>
                 </div>
                 <div class="offer__type <?= get_field('offer__type') === 'emplois' ? 'emplois' : 'stage'; ?>">
@@ -86,7 +94,11 @@ tags_filter($offers);
                 <?php endif; ?>
 
             </article>
-        <?php endwhile; ?>
+        <?php endwhile; else: ?>
+        <div class="noSearch">
+            <p>Il n'y a aucun résultat pour cette recherche</p>
+        </div>    
+        <?php endif; ?>
         <?php wp_reset_query(); ?>
     </section>
 </div>
@@ -119,9 +131,9 @@ tags_filter($offers);
                 </div>
             </div>
             <div class="form__field title">
-                <label required for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
+                <label  for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
                 <div class="form__field__input">
-                    <input type="text" id="title" name="title" placeholder="Le titre de l'annonce ici" <?= $disabled ? "disabled" : ""; ?>>
+                    <input type="text" required id="title" name="title" placeholder="Le titre de l'annonce ici" <?= $disabled ? "disabled" : ""; ?>>
                 </div>
             </div>
             <div class="form__field city">

@@ -6,6 +6,11 @@ if (!is_user_logged_in()) {
     $disabled = false;
 }
 ?>
+<?php  
+    $currentPage = get_query_var('paged');
+    $articles = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'forum', 'posts_per_page' => 6, 'paged' => $currentPage)); 
+    tags_filter($articles);
+?>
 <?php get_header(); ?>
 <div class="pageHeader forum">
     <div class="pageHeader__clip">
@@ -39,13 +44,24 @@ if (!is_user_logged_in()) {
                             <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
                         </div>
                     </div>
+                    <div class="form__field title">
+                        <label for="tags" class="form__field__label">tags&nbsp;:</label>
+                        <div class="form__field__input">
+                            <!-- <input type="text" id="tags" name="tags" value="<?= $_GET['tags']; ?>" placeholder="votre tag ici"> -->
+                            <select class="custom-select" id="tags" name="tags">
+                                <option value="">Choisissez un tag</option>
+                                <?php foreach(get_tags() as $tag): ?>
+                                <option value="<?= $tag->name; ?>"><?= $tag->name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
                     <button type="submit" class="form__submit">rechercher</button>
                 </form>
             </div>
         </div>
-        <?php $currentPage = get_query_var('paged');
-        $articles = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'forum', 'posts_per_page' => 6, 'paged' => $currentPage)); ?>
-        <?php while ($articles->have_posts()) : $articles->the_post(); ?>
+        
+        <?php if ($articles->have_posts()) : while ($articles->have_posts()) : $articles->the_post(); ?>
             <article class="offer">
                 <div class="offer__img"><?= get_avatar(get_the_author_id()); ?></div>
                 <div class="offer__all">
@@ -69,7 +85,15 @@ if (!is_user_logged_in()) {
                 </div>
                 <a href="<?= the_permalink(); ?>" class="offer__link"></a>
             </article>
-        <?php endwhile; ?>
+        <?php endwhile; elseif(!empty($_GET['title'])): ?>
+        <div class="noSearch">
+            <p>Il n'y a aucun résultat pour cette recherche  : "<?= $_GET['title']; ?>"</p>
+        </div>
+        <?php else: ?> 
+          <div class="noSearch">
+            <p>Il n'y a aucun post sur le forum</p>
+        </div>     
+        <?php endif; ?>
         <?php wp_reset_query(); ?>
     </section>
 </div>
@@ -89,9 +113,9 @@ if (!is_user_logged_in()) {
         <form action="<?= admin_url('admin-post.php'); ?>" method="post" class="newArticle__form">
             <input type="hidden" name="action" value="post_newArticle">
             <div class="form__field title">
-                <label required for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
+                <label  for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
                 <div class="form__field__input">
-                    <input type="text" id="title" name="title" placeholder="Le titre de l'annonce ici" <?= $disabled ? "disabled" : ""; ?>>
+                    <input type="text" required id="title" name="title" placeholder="Le titre de l'annonce ici" <?= $disabled ? "disabled" : ""; ?>>
                 </div>
             </div>
             <div class="form__field tags">
@@ -107,9 +131,9 @@ if (!is_user_logged_in()) {
                 </div>
             </div>
             <div class="form__field desc">
-                <label for="desc" class="form__field__label">Description&nbsp;:</label>
+                <label for="desc" class="form__field__label">Description*&nbsp;:</label>
                 <div class="form__field__input">
-                    <textarea name="desc" id="desc" <?= $disabled ? "disabled" : ""; ?>></textarea>
+                    <textarea required name="desc" id="desc" <?= $disabled ? "disabled" : ""; ?>></textarea>
                 </div>
             </div>
             <input type="submit" value="Créer l'article" class="form__submit" <?= $disabled ? "disabled" : ""; ?>>

@@ -40,6 +40,7 @@ if (!is_user_logged_in()) {
             Réponses
         </h2>
         <?php $comments = get_comments('post_id='.get_the_ID()); ?>
+        <?php if(!empty($comments)): ?>
         <?php foreach($comments as $comment): ?>
                 <article class="offer">
                     <div class="offer__img"><?= get_avatar($comment->comment_author_url); ?></div>
@@ -56,6 +57,11 @@ if (!is_user_logged_in()) {
                     </div>
                 </article>
         <?php endforeach; ?>
+        <?php else: ?>
+            <div class="noSearch">
+            <p>il n'y a pas de commentaire</p>
+        </div> 
+        <?php endif; ?>
     </section>
     <section class="addComment forum">
         <h2 class="addComment__title">
