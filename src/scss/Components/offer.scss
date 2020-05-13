@@ -163,6 +163,9 @@
         right: 0;
         bottom: 0;
         left: 0;
+        &:focus{
+            border: 2px solid black;
+        }
     }
 
     .comment__content{

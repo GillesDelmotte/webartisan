@@ -36,7 +36,9 @@
             a{
                 color: $color__blue;
                 text-decoration: none;
-                &:hover{
+                outline: none;
+
+                &:hover, &:focus{
                     transition: 0.2s all;
                     opacity: 0.6;
                 }
@@ -105,8 +107,8 @@
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         color: $color__black;
         transition: 0.2s all ;
-
-        &:hover{
+        outline:none;
+        &:hover, &:focus{
             background-color: $color__home;
             color: white;
             transition: 0.2s all ;
@@ -148,9 +150,10 @@
 
         &__title {
             a{
-                color: $color__actu;
+                color: $font__title;
                 text-decoration: none;
-                &:hover{
+                outline: none;
+                &:hover, &:focus{
                     transition: 0.2s all;
                     opacity: 0.6;
                 }

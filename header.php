@@ -63,7 +63,11 @@
                 </label>
                 <input type="checkbox" name="search__button" id="search__button" class="sr-only search__input">
                 <form id="searchform" method="get" action="<?= home_url('/'); ?>">
-                    <h3>Rechercher</h3>
+                    <label for="search__button" class="cross">
+                        <div class="cross__first"></div>
+                        <div class="cross__second"></div>
+                    </label>
+                    <div>Rechercher</div>
                     <div class="form__field title">
                         <label required for="tags" class="form__field__label sr-only">rechercher*&nbsp;:</label>
                         <div class="form__field__input">

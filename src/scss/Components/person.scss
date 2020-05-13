@@ -102,7 +102,7 @@
         background-color: rgba(255, 255, 255, 0.3);
         opacity: 0;
         transition: 0.2s opacity;
-        &:hover{
+        &:hover, &:focus{
             //opacity: 1;
             transition: 0.2s opacity;
             & ~ .person__infos{
