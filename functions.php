@@ -205,6 +205,44 @@ add_action('admin_post_post_newOffer', 'post_newOffer');
 add_action('admin_post_nopriv_post_newOffer', 'post_newOffer');
 
 
+function modify_offer()
+{
+	$post = get_post($_POST['post_id']);
+
+	if(intVal($post->post_author) !== get_current_user_id()){
+		wp_redirect(home_url('/offres-demplois-stage'));
+		exit; 
+	}
+
+	if(empty($_POST['title']) || empty($_POST['name']) || empty($_POST['tags']) || empty($_POST['type']) || empty($_POST['city']) || empty($_POST['tel']) || empty($_POST['email'])){
+		wp_redirect(home_url('/offres-demplois-stage/?id=' . $_POST['post_id'] . '#formulaire'));
+		exit;
+	}
+
+	// $my_post = array(
+	// 	'post_id' => $_POST['post_id'],
+	// 	'post_type' => 'jobs',
+	// 	'post_title' => $_POST['title'],
+	// 	'post_status' => 'publish',
+	// );
+
+	// edit_post($my_post);
+
+
+	update_field( "offer__name", $_POST['name'], $_POST['post_id'] );
+	update_field( "offer__type", $_POST['type'], $_POST['post_id'] );
+	update_field( "offer__location", $_POST['city'], $_POST['post_id'] );
+	update_field( "offer__phone", $_POST['tel'], $_POST['post_id'] );
+	update_field( "offer__email", $_POST['email'], $_POST['post_id'] );
+	update_field( "offer__content", $_POST['desc'], $_POST['post_id'] );
+
+	wp_redirect(home_url('/offres-demplois-stage'));
+	exit;
+
+}
+add_action('admin_post_modify_offer', 'modify_offer');
+add_action('admin_post_nopriv_modify_offer', 'modify_offer');
+
 function post_newsletter()
 {
 	$email = $_POST['email'];
@@ -310,3 +348,28 @@ function wa_show_admin_bar()
     return false;
 }
 add_filter( 'show_admin_bar' , 'wa_show_admin_bar' );
+
+
+function remove_menu(){
+	remove_menu_page('edit.php');
+};
+add_action('admin_menu', 'remove_menu');
+
+
+function wpse_custom_menu_order( $menu_ord ) {
+    if ( !$menu_ord ) return true;
+
+    return array(
+        'index.php', // Dashboard
+        'separator1', // First separator
+		'edit.php?post_type=actualities',
+		'edit.php?post_type=jobs',
+		'edit.php?post_type=forum',
+		'edit.php?post_type=worker',
+		'edit.php?post_type=tutos',
+		'edit.php?post_type=mdn',
+		'separator2',
+    );
+}
+add_filter( 'custom_menu_order', 'wpse_custom_menu_order', 10, 1 );
+add_filter( 'menu_order', 'wpse_custom_menu_order', 10, 1 );

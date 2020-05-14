@@ -31,7 +31,7 @@ if (!is_user_logged_in()) {
         </h2>
         <div class="filter forum">
             <input type="checkbox" name="filter" class="sr-only filter__input" id="filter">
-            <label for="filter" class="filter__button--open"><i></i></label>
+            <label for="filter" class="filter__button--open" title="ouvrir la fenêtre du filtre"><i></i></label>
             <div class="filter__window">
                 <label for="filter" class="filter__button--close">
                     <i></i>
@@ -39,9 +39,15 @@ if (!is_user_logged_in()) {
                 <h3 class="filter__window__title">Filtre</h3>
                 <form action="">
                     <div class="form__field title">
-                        <label required for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
+                        <label required for="title" class="form__field__label">Titre de l'annonce&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
+                            <input type="text" list="article" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
+                            <datalist id="article">
+                                <?php while ($articles->have_posts()) : $articles->the_post(); ?>
+                                    <option value="<?= the_title(); ?>">
+                                <?php endwhile; ?>
+                                <?php wp_reset_query(); ?>
+                            </datalist>
                         </div>
                     </div>
                     <div class="form__field title">
@@ -50,6 +56,7 @@ if (!is_user_logged_in()) {
                             <!-- <input type="text" id="tags" name="tags" value="<?= $_GET['tags']; ?>" placeholder="votre tag ici"> -->
                             <select class="custom-select" id="tags" name="tags">
                                 <option value="">Choisissez un tag</option>
+                                <option value="" disabled>-----------------------------------------</option>
                                 <?php foreach(get_tags() as $tag): ?>
                                 <option value="<?= $tag->name; ?>"><?= $tag->name; ?></option>
                                 <?php endforeach; ?>
@@ -73,6 +80,7 @@ if (!is_user_logged_in()) {
                         <?php $tags = get_the_tags(get_the_ID()); ?>
                         <?php foreach ($tags as $tag) : ?>
                             <li class="tag <?= $tag->slug; ?>">
+                                <a href="<?= home_url( $wp->request ); ?>/?title=&tags=<?= $tag->slug; ?>"></a>
                                 <?= $tag->name; ?>
                             </li>
                         <?php endforeach; ?>

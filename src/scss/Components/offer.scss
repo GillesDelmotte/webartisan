@@ -40,10 +40,11 @@
     &__tags{
         display: flex;
         flex-wrap: wrap;
+        margin-bottom: 15px;
     }
 
     &__title{
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         font-family: $font__title;
         font-size: 25px;
         display: inline-block;
@@ -116,6 +117,16 @@
                 background-image: url("#{$icons}comment.svg");
                 background-size: 100% 100%;
                 
+            }
+            &.offer__edit::before{
+                content: '';
+                margin-right: 5px;
+                display: block;
+                //background-color: black;
+                width: 20px;
+                height: 20px;
+                background-image: url("#{$icons}draw.svg");
+                background-size: 100% 100%;     
             }
         }
     }
@@ -240,8 +251,21 @@
                 border: 1px solid $color__emplois;
                 background-color: initial;
                 border-radius: 4px;
+            }  
+
+            &__input textarea{
+                outline: none;
+                width: 100%;
+                display: block;
+                padding: 10px 20px;
+                box-sizing: border-box;
+                font-size: 16px;
+                border: 1px solid $color__emplois;
+                background-color: initial;
+                border-radius: 4px;
                 
             }
+
             &.name{
                 grid-area: name;
             }

@@ -14,11 +14,13 @@
     }
 
     .form__field{
+        position: relative;
         &__label{
             font-family: $font__title;
             margin: 0 20px 15px;
             display: block;
         }
+
         &__input textarea{
             display: block;
             width: 100%;

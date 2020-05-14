@@ -32,10 +32,12 @@
                         </div>
                     </div>
                     <div class="form__field">
+                        <i class="showPassword showPassword--login"></i>
                         <label for="passwordConnection" class="form__field__label">Mot de passe&nbsp;:</label>
                         <div class="form__field__input">
                             <input type="password" id="passwordConnection" name="password" placeholder="Minimum 8 caractères">
                         </div>
+                        
                     </div>
                     <div class="form__action">
                         <button type="submit" name="submit" class="form__action__submit">Connexion</button>
@@ -61,6 +63,7 @@
                         </div>
                     </div>
                     <div class="form__field">
+                        <i class="showPassword showPassword--register"></i>
                         <label for="passwordInscription" class="form__field__label">Mot de passe&nbsp;:</label>
                         <div class="form__field__input">
                             <input type="password" id="passwordInscription" name="password" placeholder="Minimum 8 caractères">

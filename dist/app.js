@@ -93,7 +93,45 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+var burger = document.querySelector('.burger');
 
+if (burger) {
+  burger.onclick = function () {
+    var filter = document.querySelector('.filter__input');
+    filter.checked = false;
+  };
+}
+
+var viewLoginPass = document.querySelector('.showPassword--login');
+
+if (viewLoginPass) {
+  viewLoginPass.onclick = function () {
+    var input = document.querySelector('#passwordConnection');
+
+    if (input.type === 'password') {
+      input.type = 'text';
+    } else {
+      input.type = 'password';
+    }
+  };
+}
+
+var viewRegisterPass = document.querySelector('.showPassword--register');
+
+if (viewRegisterPass) {
+  viewRegisterPass.onclick = function () {
+    var input = document.querySelector('#passwordInscription');
+    var input2 = document.querySelector('#passwordConfirm');
+
+    if (input.type === 'password') {
+      input.type = 'text';
+      input2.type = 'text';
+    } else {
+      input.type = 'password';
+      input2.type = 'password';
+    }
+  };
+}
 
 /***/ }),
 

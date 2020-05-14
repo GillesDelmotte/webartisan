@@ -21,7 +21,7 @@ $tutos = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'tutos', 'post
         <h2 class="sr-only">Toutes les offres d'emplois</h2>
         <div class="filter snippets">
             <input type="checkbox" name="filter" class="sr-only filter__input" id="filter">
-            <label for="filter" class="filter__button--open"><i></i></label>
+            <label for="filter" class="filter__button--open" title="ouvrir la fenêtre du filtre"><i></i></label>
             <div class="filter__window">
                 <label for="filter" class="filter__button--close">
                     <i></i>
@@ -31,7 +31,13 @@ $tutos = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'tutos', 'post
                     <div class="form__field title">
                         <label for="title" class="form__field__label">Titre de l'annonce&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
+                            <input type="text" id="title" list="tuto" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
+                            <datalist id="tuto">
+                                <?php while ($tutos->have_posts()) : $tutos->the_post(); ?>
+                                    <option value="<?= the_title(); ?>">
+                                <?php endwhile; ?>
+                                <?php wp_reset_query(); ?>
+                            </datalist>
                         </div>
                     </div>
                     <div class="form__field title">
@@ -40,6 +46,7 @@ $tutos = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'tutos', 'post
                             <!-- <input type="text" id="tags" name="tags" value="<?= $_GET['tags']; ?>" placeholder="votre tag ici"> -->
                             <select class="custom-select" id="tags" name="tags">
                                 <option value="">Choisissez un tag</option>
+                                <option value="" disabled>-----------------------------------------</option>
                                 <?php foreach(get_tags() as $tag): ?>
                                 <option value="<?= $tag->name; ?>"><?= $tag->name; ?></option>
                                 <?php endforeach; ?>
@@ -59,6 +66,7 @@ $tutos = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'tutos', 'post
                         <?php $tags = get_the_tags(get_the_ID()); ?>
                         <?php foreach ($tags as $tag) : ?>
                             <li class="tag <?= $tag->slug; ?>">
+                                <a href="<?= home_url( $wp->request ); ?>/?title=&tags=<?= $tag->slug; ?>"></a>
                                 <?= $tag->name; ?>
                             </li>
                         <?php endforeach; ?>

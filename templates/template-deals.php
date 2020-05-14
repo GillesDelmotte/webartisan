@@ -1,5 +1,7 @@
 <?php /*Template name: page des offres d'emplois*/ ?>
 <?php
+global $wp;
+$userLogged = get_current_user_id();
 if (!is_user_logged_in()) {
     $disabled = true;
 } else {
@@ -10,6 +12,9 @@ $currentPage = get_query_var('paged');
 $offers = new WP_Query(array('s' => $_GET['title'], 'post_type' => 'jobs', 'posts_per_page' => 6, 'paged' => $currentPage)); 
 tags_filter($offers);
 
+if($_GET['id']){
+    $currentpost = get_post($_GET['id']); 
+}
 ?>
 
 <?php get_header(); ?>
@@ -30,7 +35,7 @@ tags_filter($offers);
         <h2 class="sr-only">Toutes les offres d'emplois</h2>
         <div class="filter deals">
             <input type="checkbox" name="filter" class="sr-only filter__input" id="filter">
-            <label for="filter" class="filter__button--open"><i></i></label>
+            <label for="filter" class="filter__button--open" title="ouvrir la fenêtre du filtre"><i></i></label>
             <div class="filter__window">
                 <label for="filter" class="filter__button--close">
                     <i></i>
@@ -40,7 +45,13 @@ tags_filter($offers);
                     <div class="form__field title">
                         <label for="title" class="form__field__label">Titre de l'annonce&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="text" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
+                            <input type="text" list="offer" id="title" name="title" value="<?= $_GET['title']; ?>" placeholder="Le titre de l'annonce ici">
+                            <datalist id="offer">
+                                <?php while ($offers->have_posts()) : $offers->the_post(); ?>
+                                    <option value="<?= the_title(); ?>">
+                                <?php endwhile; ?>
+                                <?php wp_reset_query(); ?>
+                            </datalist>
                         </div>
                     </div>
                     <div class="form__field title">
@@ -73,6 +84,7 @@ tags_filter($offers);
                         <?php $tags = get_the_tags(get_the_ID()); ?>
                         <?php foreach ($tags as $tag) : ?>
                             <li class="tag <?= $tag->slug; ?>">
+                                <a href="<?= home_url( $wp->request ); ?>/?title=&tags=<?= $tag->slug; ?>"></a>
                                 <?= $tag->name; ?>
                             </li>
                         <?php endforeach; ?>
@@ -83,6 +95,7 @@ tags_filter($offers);
                     <div class="offer__infos">
                         <span class="offer__email"><a href="mailto:<?= get_field('offer__email') ?>"><?= get_field('offer__email') ?></a></span>
                         <span class="offer__phone"><a href="tel:<?= get_field('offer__phone'); ?>"><?= get_field('offer__phone'); ?></a></span>
+                        <span class="offer__edit"><a href="<?= home_url( $wp->request ); ?>/?id=<?= get_the_ID(); ?>#formulaire">modifier mon annonce</a></span>
                     </div>
                 </div>
                 <div class="offer__type <?= get_field('offer__type') === 'emplois' ? 'emplois' : 'stage'; ?>">
@@ -114,12 +127,13 @@ tags_filter($offers);
 </div>
 <div class="container">
     <section class="newOffer">
-        <h2 class="newOffer__title">Publier une offre d‘emplois</h2>
+        <h2 class="newOffer__title" id="formulaire">Publier une offre d‘emplois</h2>
         <p class="newOffer__explanation">
             Vous pouvez mettre ou ne pas mettre de description et de lien vers une offre externe au site, mais il en faut au moins un des deux.
         </p>
-        <form action="<?= admin_url('admin-post.php'); ?>" method="post" class="newOffer__form">
-            <input type="hidden" name="action" value="post_newOffer">
+        <form action="<?= admin_url('admin-post.php'); ?>" method="post" class="newOffer__form" >
+            <input type="hidden" name="action" value="<?=!empty($currentpost) ? 'modify_offer' : 'post_newOffer';?>">
+            <input type="hidden" name="post_id" value="<?= $_GET['id']; ?>">
             <div class="form__field type">
                 <input class="radio__input" type="radio" id="stage" name="type" value="stage" <?= $disabled ? "disabled" : ""; ?>><label for="stage" class="type__label">Stage</label>
                 <input class="radio__input" type="radio" id="emplois" name="type" value="emplois" checked="checked" <?= $disabled ? "disabled" : ""; ?>><label for="emplois" class="type__label">Emplois</label>
@@ -127,37 +141,37 @@ tags_filter($offers);
             <div class="form__field name">
                 <label for="name" class="form__field__label">Nom de l'entreprise*&nbsp;:</label>
                 <div class="form__field__input">
-                    <input required type="text" id="name" name="name" placeholder="Le nom de votre entreprise ici" <?= $disabled ? "disabled" : ""; ?>>
+                    <input required type="text" id="name" name="name" value="<?= !empty($currentpost) ?  get_field( "offer__name", $_GET['id']) : null;?>" placeholder="Le nom de votre entreprise ici" <?= $disabled ? "disabled" : ""; ?>>
                 </div>
             </div>
             <div class="form__field title">
                 <label  for="title" class="form__field__label">Titre de l'annonce*&nbsp;:</label>
                 <div class="form__field__input">
-                    <input type="text" required id="title" name="title" placeholder="Le titre de l'annonce ici" <?= $disabled ? "disabled" : ""; ?>>
+                    <input type="text" required id="title" name="title" value="<?= !empty($currentpost) ? $currentpost->post_title : null;?>" placeholder="Le titre de l'annonce ici" <?= $disabled ? "disabled" : ""; ?>>
                 </div>
             </div>
             <div class="form__field city">
                 <label for="city" class="form__field__label">ville*&nbsp;:</label>
                 <div class="form__field__input">
-                    <input required type="text" id="city" name="city" placeholder="Votre ville ici" <?= $disabled ? "disabled" : ""; ?>>
+                    <input required type="text" id="city" name="city" value="<?= !empty($currentpost) ?  get_field( "offer__location", $_GET['id']) : null;?>" placeholder="Votre ville ici" <?= $disabled ? "disabled" : ""; ?>>
                 </div>
             </div>
             <div class="form__field email">
                 <label for="email" class="form__field__label">Email de contact*&nbsp;:</label>
                 <div class="form__field__input">
-                    <input required type="text" id="email" name="email" placeholder="Votre email de contact ici" <?= $disabled ? "disabled" : ""; ?>>
+                    <input required type="text" id="email" name="email" value="<?= !empty($currentpost) ?  get_field( "offer__email", $_GET['id']) : null;?>"placeholder="Votre email de contact ici" <?= $disabled ? "disabled" : ""; ?>>
                 </div>
             </div>
             <div class="form__field tel">
                 <label for="tel" class="form__field__label">Telephone*&nbsp;:</label>
                 <div class="form__field__input">
-                    <input required type="text" id="tel" name="tel" placeholder="Votre numéro ici" <?= $disabled ? "disabled" : ""; ?>>
+                    <input required type="text" id="tel" name="tel" value="<?= !empty($currentpost) ?  get_field( "offer__phone", $_GET['id']) : null;?>" placeholder="Votre numéro ici" <?= $disabled ? "disabled" : ""; ?>>
                 </div>
             </div>
             <div class="form__field desc">
                 <label for="desc" class="form__field__label">Description&nbsp;:</label>
                 <div class="form__field__input">
-                    <textarea name="desc" id="desc" <?= $disabled ? "disabled" : ""; ?>></textarea>
+                    <textarea name="desc" id="desc" <?= $disabled ? "disabled" : ""; ?>><?= !empty($currentpost) ?  strip_tags(get_field( "offer__content", $_GET['id'])) : null;?></textarea>
                 </div>
             </div>
             <div class="form__field link">
