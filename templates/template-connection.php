@@ -1,4 +1,5 @@
 <?php /*Template name: page de connexion*/ ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -23,10 +24,13 @@
         <section class="forms container">
             <div>
                 <h1 class="forms__title">Connexion</h1>
+                <?php if($_SESSION['connection_error']): ?>
+                    <div class="error--connection"> <?= $_SESSION['connection_error']; ?></div>
+                <?php endif; ?>
                 <form action="<?= admin_url('admin-post.php'); ?>" method="POST" class="js-form-login">
                     <input type="hidden" name="action" value="post_login">
                     <div class="form__field">
-                        <label for="nameConnection" class="form__field__label">Email&nbsp;:</label>
+                        <label for="nameConnection" class="form__field__label">Nom d'utilisateur&nbsp;:</label>
                         <div class="form__field__input">
                             <input type="text" id="nameConnection" name="name" placeholder="Jean Charles">
                         </div>
@@ -53,21 +57,38 @@
                     <div class="form__field">
                         <label for="emailInscription" class="form__field__label">Email&nbsp;:</label>
                         <div class="form__field__input">
-                            <input type="text" id="emailInscription" name="email" placeholder="jean.charles@gmail.com">
+                            <input type="email" id="emailInscription" name="email" placeholder="jean.charles@gmail.com">
                         </div>
+                        <?php if($_SESSION['email']): ?>
+                            <div class="error"> <?= $_SESSION['email']; ?></div>
+                        <?php endif; ?>
+                        <?php if($_SESSION['email_invalid']): ?>
+                            <div class="error"> <?= $_SESSION['email_invalid']; ?></div>
+                        <?php endif; ?>
+
                     </div>
                     <div class="form__field">
                         <label for="nameInscription" class="form__field__label">Nom d'utilisateur&nbsp;:</label>
                         <div class="form__field__input">
                             <input type="text" id="nameInscription" name="name" placeholder="Jean Charles">
                         </div>
+                        <?php if($_SESSION['username']): ?>
+                            <div class="error"> <?= $_SESSION['username']; ?></div>
+                        <?php endif; ?>
+                        <?php if($_SESSION['username_length']): ?>
+                            <div class="error"> <?= $_SESSION['username_length']; ?></div>
+                        <?php endif; ?>
                     </div>
+                    
                     <div class="form__field">
                         <i class="showPassword showPassword--register"></i>
                         <label for="passwordInscription" class="form__field__label">Mot de passe&nbsp;:</label>
                         <div class="form__field__input">
                             <input type="password" id="passwordInscription" name="password" placeholder="Minimum 8 caractères">
                         </div>
+                        <?php if($_SESSION['confirmPassword']): ?>
+                            <div class="error"> <?= $_SESSION['confirmPassword']; ?></div>
+                        <?php endif; ?>
                     </div>
                     <div class="form__field">
                         <label for="passwordConfirm" class="form__field__label">Confirmation du mot de passe&nbsp;:</label>

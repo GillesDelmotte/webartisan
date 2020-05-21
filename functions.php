@@ -52,7 +52,9 @@ add_filter('nav_menu_css_class', 'be_menu_item_classes', 10, 3);
 
 function post_login()
 {
-	$errors = 'il y a des erreurs';
+	session_start();
+	session_destroy();
+	session_start();
 
 	$info = array();
 	$info['user_login'] = $_POST['name'];
@@ -66,6 +68,7 @@ function post_login()
 		wp_redirect(home_url());
 		exit;
 	} else {
+		$_SESSION['connection_error'] = $user_signon->get_error_message();
 		wp_redirect(home_url('/connexion-inscription'));
 		exit;
 	}
@@ -77,44 +80,51 @@ add_action('admin_post_nopriv_post_login', 'post_login');
 
 function post_register()
 {
-	global $reg_errors;
-	$reg_errors = new WP_Error;
-	
+	session_start();
+	session_destroy();
+	session_start();
 	$username=$_POST['name'];
     $useremail=$_POST['email'];
 	$password=$_POST['password'];
 	$confirmPassword = $_POST['passwordConfirm'];
 
+
 	if(empty( $username ) || empty( $useremail ) || empty($password) || empty( $confirmPassword ))
     {
-        $reg_errors->add('field', 'Certains champs requis sont manquant');
+		$_SESSION['field'] = 'Certains champs requis sont manquant';
 	} 
 	
 	if ( 6 > strlen( $username ) )
     {
-        $reg_errors->add('username_length', 'Nom d‘utilisateur trop court. 6 caractère sont requis' );
+		$_SESSION['username_length'] = 'Nom d‘utilisateur trop court. 6 caractère sont requis';
+		
 	}
 	
 	if ( username_exists( $username ) )
     {
-        $reg_errors->add('user_name', 'Ce nom d‘utilisateur est déjâ pris ');
+		$_SESSION['username'] = 'Ce nom d‘utilisateur est déjâ pris';
+		
 	}
 	
 	if ( !is_email( $useremail ) )
     {
-        $reg_errors->add( 'email_invalid', 'Email invalide' );
+		$_SESSION['email_invalid'] = 'Email invalide';
+		
 	}
 	
 	if ( email_exists( $useremail ) )
     {
-        $reg_errors->add( 'email', 'Cet email existe déjâ' );
+		$_SESSION['email'] = 'Cet email existe déjâ';
 	}
 	
 	if( $password != $confirmPassword){
-		$reg_errors->add( 'confirmPassword', 'Votre mot de passe et la confirmation sont différents' );
+		$_SESSION['confirmPassword'] = 'Votre mot de passe et la confirmation sont différents';
+
 	}
 
-	if ( 1 > count( $reg_errors->get_error_messages() ) ){
+	
+
+	if ( empty($_SESSION) ){
 		global $username, $useremail;
         $username   =   sanitize_user( $_POST['name'] );
         $useremail  =   sanitize_email( $_POST['email'] );
@@ -209,7 +219,7 @@ function modify_offer()
 {
 	$post = get_post($_POST['post_id']);
 
-	if(intVal($post->post_author) !== get_current_user_id()){
+	if(intVal($post->post_author) !== get_current_user_id()){	
 		wp_redirect(home_url('/offres-demplois-stage'));
 		exit; 
 	}
@@ -219,14 +229,21 @@ function modify_offer()
 		exit;
 	}
 
-	// $my_post = array(
-	// 	'post_id' => $_POST['post_id'],
-	// 	'post_type' => 'jobs',
-	// 	'post_title' => $_POST['title'],
-	// 	'post_status' => 'publish',
-	// );
+	$post = get_post( $_POST['post_id'] );
 
-	// edit_post($my_post);
+	$post->post_title = $_POST['title'];
+
+	wp_update_post( $post );	
+
+	$tags = explode(",", $_POST['tags']);
+
+	$array = [];
+
+	foreach ($tags as $tag) {
+		$array[] = $tag;
+	}
+
+	wp_set_post_tags($_POST['post_id'], $array);
 
 
 	update_field( "offer__name", $_POST['name'], $_POST['post_id'] );

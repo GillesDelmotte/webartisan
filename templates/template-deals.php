@@ -95,7 +95,9 @@ if($_GET['id']){
                     <div class="offer__infos">
                         <span class="offer__email"><a href="mailto:<?= get_field('offer__email') ?>"><?= get_field('offer__email') ?></a></span>
                         <span class="offer__phone"><a href="tel:<?= get_field('offer__phone'); ?>"><?= get_field('offer__phone'); ?></a></span>
+                        <?php if(get_the_author_meta( 'ID' ) === get_current_user_id()): ?>
                         <span class="offer__edit"><a href="<?= home_url( $wp->request ); ?>/?id=<?= get_the_ID(); ?>#formulaire">modifier mon annonce</a></span>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="offer__type <?= get_field('offer__type') === 'emplois' ? 'emplois' : 'stage'; ?>">
